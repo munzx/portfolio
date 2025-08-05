@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import {
 		HeroSlide,
-		FeaturesSlide,
+		FeaturesSlideIPhone,
 		GallerySlide,
 		MultiDeviceSlide,
 		FinalSlide,
@@ -120,7 +120,12 @@
 <HeroSlide {galleryImages} />
 
 <!-- Slide 2: Features Overview -->
-<FeaturesSlide {featureItems} {currentFeature} reverse={true} onFeatureHover={handleFeatureHover} />
+<FeaturesSlideIPhone
+	{featureItems}
+	{currentFeature}
+	reverse={true}
+	onFeatureHover={handleFeatureHover}
+/>
 
 <!-- Default layout (iPad on right) -->
 <FeaturesSlideIPad {featureItems} {currentFeature} onFeatureHover={handleFeatureHover} />

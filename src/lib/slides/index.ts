@@ -1,5 +1,5 @@
 export { default as HeroSlide } from './HeroSlide.svelte';
-export { default as FeaturesSlide } from './FeaturesSlide.svelte';
+export { default as FeaturesSlideIPhone } from './FeaturesSlideIPhone.svelte';
 export { default as FeaturesSlideIPad } from './FeaturesSlideIPad.svelte';
 export { default as FeaturesSlideMacBook } from './FeaturesSlideMacBook.svelte';
 export { default as FeatureSlideWeb } from './FeatureSlideWeb.svelte';
