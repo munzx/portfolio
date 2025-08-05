@@ -1,0 +1,3 @@
+// Place your PETSMACHI image in the static folder
+// For example: static/petsmachi-app.png
+// Then you can reference it like: imageUrl="/petsmachi-app.png"

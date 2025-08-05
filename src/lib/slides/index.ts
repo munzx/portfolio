@@ -1,0 +1,9 @@
+export { default as HeroSlide } from './HeroSlide.svelte';
+export { default as FeaturesSlide } from './FeaturesSlide.svelte';
+export { default as FeaturesSlideIPad } from './FeaturesSlideIPad.svelte';
+export { default as FeaturesSlideMacBook } from './FeaturesSlideMacBook.svelte';
+export { default as FeatureSlideWeb } from './FeatureSlideWeb.svelte';
+export { default as GallerySlide } from './GallerySlide.svelte';
+export { default as MultiDeviceSlide } from './MultiDeviceSlide.svelte';
+export { default as FinalSlide } from './FinalSlide.svelte';
+export { default as BaseSlide } from './BaseSlide.svelte';
