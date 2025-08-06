@@ -5,43 +5,17 @@
 </script>
 
 <section
-	class="reveal snap-start {className}"
+	class="reveal relative flex min-h-auto w-screen snap-start flex-col justify-center
+		   px-3 py-4
+		   sm:px-6 sm:py-6
+		   md:px-8 md:py-8
+		   lg:min-h-screen lg:p-0 {className}"
 	style="background-color: {backgroundColor}; min-height: {minHeight};"
 >
 	<slot />
 </section>
 
 <style>
-	section {
-		scroll-snap-align: start;
-		width: 100vw;
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		position: relative;
-	}
-
-	/* Responsive adjustments */
-	@media (max-width: 1024px) {
-		section {
-			padding: 2rem 1rem;
-		}
-	}
-
-	@media (max-width: 768px) {
-		section {
-			padding: 1.5rem 1rem;
-		}
-	}
-
-	/* Ensure proper snap scrolling on all devices */
-	@media (max-height: 800px) {
-		section {
-			min-height: 100vh;
-		}
-	}
-
 	/* Print styles for A4 landscape */
 	@media print {
 		section {

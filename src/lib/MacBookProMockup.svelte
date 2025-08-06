@@ -4,6 +4,8 @@
 		'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2043&q=80';
 	export let altText: string = 'MacBook Pro Display Content';
 
+	export let imgDisplay: 'cover' | 'contain' = 'contain';
+
 	// Time functionality
 	let currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
@@ -21,7 +23,7 @@
 			<!-- Screen Bezel -->
 			<div class="relative h-full w-full overflow-hidden rounded-lg bg-black">
 				<!-- Display Area -->
-				<div class="relative h-full w-full overflow-hidden rounded-md bg-white">
+				<div class="relative m-0 h-full w-full overflow-hidden rounded-md bg-gray-50 p-0">
 					<!-- Menu Bar -->
 					<div
 						class="absolute top-0 right-0 left-0 z-20 flex h-6 items-center justify-between bg-black/30 px-4 text-sm font-medium text-white backdrop-blur-md"
@@ -57,7 +59,13 @@
 					</div>
 
 					<!-- Full Screen Image -->
-					<img src={imageUrl} alt={altText} class="inset-0 mt-6 h-auto w-full object-cover" />
+					<img
+						src={imageUrl}
+						alt={altText}
+						class="inset-0 mt-6 w-full {imgDisplay === 'cover'
+							? 'h-full object-cover'
+							: 'h-auto object-contain'}"
+					/>
 				</div>
 			</div>
 		</div>

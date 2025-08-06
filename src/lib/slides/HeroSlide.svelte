@@ -3,13 +3,29 @@
 	import MacBookProMockup from '$lib/MacBookProMockup.svelte';
 
 	export let galleryImages: string[];
+	export let accentColor: string = '#ffffff'; // Apple blue as default
 </script>
 
-<BaseSlide className="flex h-screen items-center justify-center overflow-hidden text-[#f5f5f7]">
-	<!-- Subtle grid background -->
+<BaseSlide
+	className="flex h-full min-h-screen justify-center items-center overflow-hidden text-[#f5f5f7]"
+>
+	<!-- Dynamic gradient background based on accent color -->
 	<div class="absolute inset-0 opacity-5">
 		<div
-			class="h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"
+			class="h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]"
+			style="background: radial-gradient(circle at center, {accentColor}15 0%, transparent 70%)"
+		></div>
+	</div>
+
+	<!-- Floating geometric shapes -->
+	<div class="pointer-events-none absolute inset-0 overflow-hidden">
+		<div
+			class="animate-pulse-slow absolute top-1/4 left-1/4 h-32 w-32 rounded-full opacity-5 blur-xl"
+			style="background-color: {accentColor}"
+		></div>
+		<div
+			class="animate-pulse-slow absolute right-1/4 bottom-1/3 h-24 w-24 rounded-full opacity-5 blur-lg"
+			style="background-color: {accentColor}; animation-delay: 2s;"
 		></div>
 	</div>
 

@@ -13,7 +13,7 @@
 	export let reverse: boolean = false;
 </script>
 
-<BaseSlide className="flex h-screen items-center text-[#f5f5f7]">
+<BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
 	<div class="container mx-auto flex h-full max-w-7xl items-center px-8">
 		<div class="grid w-full items-center gap-16 lg:grid-cols-2 lg:grid-rows-1">
 			<!-- Features List -->

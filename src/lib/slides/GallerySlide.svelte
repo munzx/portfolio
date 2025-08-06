@@ -6,7 +6,7 @@
 	export let centerIndex: number;
 </script>
 
-<BaseSlide className="flex h-screen items-center text-[#f5f5f7]">
+<BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
 	<div class="container mx-auto flex h-full max-w-6xl flex-col justify-center px-8 text-center">
 		<div class="mb-12">
 			<h2 class="mb-6 text-6xl leading-tight font-semibold tracking-tight text-white">

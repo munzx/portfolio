@@ -20,7 +20,7 @@
 	export let secondaryButtonText: string = ''; // Empty string means no secondary button
 </script>
 
-<BaseSlide className="flex h-screen items-center justify-center overflow-hidden text-[#f5f5f7]">
+<BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
 	<!-- Dynamic gradient background based on accent color -->
 	<div class="absolute inset-0 opacity-5">
 		<div
@@ -32,11 +32,11 @@
 	<!-- Floating geometric shapes for visual interest -->
 	<div class="pointer-events-none absolute inset-0 overflow-hidden">
 		<div
-			class="absolute top-1/4 left-1/4 h-32 w-32 animate-pulse rounded-full opacity-10 blur-xl"
+			class="animate-pulse-slow absolute top-1/4 left-1/4 h-32 w-32 rounded-full opacity-10 blur-xl"
 			style="background-color: {accentColor}"
 		></div>
 		<div
-			class="absolute right-1/4 bottom-1/3 h-24 w-24 animate-pulse rounded-full opacity-5 blur-lg"
+			class="animate-pulse-slow absolute right-1/4 bottom-1/3 h-24 w-24 rounded-full opacity-5 blur-lg"
 			style="background-color: {accentColor}; animation-delay: 2s;"
 		></div>
 	</div>

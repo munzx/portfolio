@@ -1,3 +1,21 @@
 @import 'tailwindcss';
+
 @plugin '@tailwindcss/forms';
+
 @plugin '@tailwindcss/typography';
+
+/* Custom slow pulse animation */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.10;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
