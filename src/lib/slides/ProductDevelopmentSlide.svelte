@@ -207,7 +207,7 @@
 			</div>
 
 			<!-- Mobile Feedback Loop -->
-			<div class="absolute top-0 bottom-0 -left-16 flex w-16 items-center justify-center lg:hidden">
+			<div class="absolute top-0 bottom-0 -left-16 flex w-16 items-center justify-center md:hidden">
 				<div class="relative h-full w-full">
 					<svg
 						width="100%"

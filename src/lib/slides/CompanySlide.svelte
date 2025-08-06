@@ -169,21 +169,6 @@
 						style="background-color: {accentColor}"
 					></div>
 
-					<!-- Logo Container -->
-					<!-- <div class="relative transform transition-all duration-700 hover:scale-105">
-						<div
-							class="relative rounded-2xl p-8"
-							style="background: linear-gradient(135deg, {accentColor}10 0%, {accentColor}5 100%); border: 1px solid {accentColor}20;"
-						>
-							<img src={company.logo} alt="{company.name} logo" class="h-48 w-48 object-contain" />
-						</div>
-
-						<div
-							class="absolute inset-0 rounded-2xl border-2 opacity-30"
-							style="border-color: {accentColor}"
-						></div>
-					</div> -->
-
 					<MacBookProMockup imageUrl={company.logo} imgDisplay="cover" />
 
 					<!-- Achievements -->
@@ -202,18 +187,15 @@
 					{/if}
 
 					<!-- Floating badge -->
-					<!-- <div class="absolute -top-6 -right-6 opacity-80">
-						<div
-							class="rounded-full p-4 backdrop-blur-sm"
-							style="background-color: {accentColor}20; border: 1px solid {accentColor}40;"
-						>
-							<svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+					<div class="absolute -top-4 -right-3.5 z-50 opacity-70">
+						<div class="rounded-full bg-gradient-to-t from-gray-400/10 to-gray-200/10 p-2">
+							<svg class="h-6 w-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
 								<path
 									d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
 								/>
 							</svg>
 						</div>
-					</div> -->
+					</div>
 				</div>
 			</div>
 		</div>

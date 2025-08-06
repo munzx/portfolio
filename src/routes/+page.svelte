@@ -199,28 +199,8 @@
 	}
 
 	onMount(() => {
-		// Scroll animations observer
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('animate-in');
-					}
-				});
-			},
-			{
-				threshold: 0.1,
-				rootMargin: '0px 0px -100px 0px'
-			}
-		);
-
-		document.querySelectorAll('.reveal').forEach((el) => {
-			observer.observe(el);
-		});
-
-		return () => {
-			observer.disconnect();
-		};
+		// Pure CSS scroll-snap implementation
+		// No JavaScript needed for scroll behavior
 	});
 </script>
 
@@ -357,17 +337,20 @@
 		overflow-x: hidden;
 	}
 
-	/* Reveal animations */
+	/* Full-page scroll snap for slides */
+	:global(section),
+	:global(.slide) {
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+		min-height: 100vh;
+	}
+
+	/* Simple reveal animations */
 	:global(.reveal) {
-		opacity: 0;
-		transform: translateY(50px);
+		opacity: 1;
+		transform: translateY(0);
 		transition:
 			opacity 0.8s ease-out,
 			transform 0.8s ease-out;
-	}
-
-	:global(.reveal.animate-in) {
-		opacity: 1;
-		transform: translateY(0);
 	}
 </style>
