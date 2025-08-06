@@ -231,7 +231,7 @@
 	name="Moe Lehmando"
 	title="Software Engineer & Creative Developer"
 	description="Passionate about creating beautiful, functional digital experiences that make a difference. I specialize in full-stack development, UX/UI design, and bringing innovative ideas to life through code."
-	portfolioImage={assetLibraryImage}
+	portfolioImage="/img/me.jpg"
 	skills={[
 		'TypeScript',
 		'Svelte/SvelteKit',
@@ -242,7 +242,7 @@
 		'Product Strategy',
 		'System Architecture'
 	]}
-	contactEmail="munzir@example.com"
+	contactEmail="munzir.suliman@outlook.com"
 	contactLinkedIn="https://linkedin.com/in/munzirsuliman"
 	contactGitHub="https://github.com/munzirsuliman"
 	experience="12+ years"

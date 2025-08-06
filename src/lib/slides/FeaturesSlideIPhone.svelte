@@ -11,6 +11,10 @@
 	export let currentFeature: { title: string; description: string; image: string; active: boolean };
 	export let onFeatureHover: (index: number) => void;
 	export let reverse: boolean = false;
+	export let title: string = 'Designed for<br />Creative Collaboration';
+	export let description: string =
+		"AuraFlow brings your entire creative process into one place. It's the tool your team has been waiting for.";
+	export let accentColor: string = '#0071e3';
 </script>
 
 <BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
@@ -19,11 +23,10 @@
 			<!-- Features List -->
 			<div class="flex flex-col justify-center space-y-6" class:lg:order-2={reverse}>
 				<h2 class="text-7xl leading-tight font-semibold tracking-tight text-white">
-					Designed for<br />Creative Collaboration
+					{@html title}
 				</h2>
 				<p class="max-w-xl text-lg leading-relaxed text-[#a1a1a6]">
-					AuraFlow brings your entire creative process into one place. It's the tool your team has
-					been waiting for.
+					{description}
 				</p>
 
 				<div class="space-y-2 pt-6">

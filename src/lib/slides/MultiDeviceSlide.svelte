@@ -7,17 +7,20 @@
 	export let assetLibraryImage: string;
 	export let feedbackImage: string;
 	export let liveCanvasImage: string;
+	export let title: string = 'Beautiful on every device';
+	export let description: string =
+		"Experience AuraFlow's seamless interface across all your devices. From mobile sketches to desktop masterpieces.";
+	export let accentColor: string = '#0071e3';
 </script>
 
 <BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
 	<div class="container mx-auto flex h-full max-w-7xl flex-col justify-center px-8">
 		<div class="mb-12 text-center">
 			<h2 class="mb-6 text-6xl leading-tight font-semibold tracking-tight text-white">
-				Beautiful on every device
+				{title}
 			</h2>
 			<p class="mx-auto max-w-2xl text-lg leading-relaxed text-[#a1a1a6]">
-				Experience AuraFlow's seamless interface across all your devices. From mobile sketches to
-				desktop masterpieces.
+				{description}
 			</p>
 		</div>
 

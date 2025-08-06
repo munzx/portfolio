@@ -177,7 +177,7 @@
 					</div>
 
 					<!-- Floating status indicator -->
-					<div class="absolute -top-8 -right-8 opacity-80">
+					<!-- <div class="absolute -top-8 -right-8 opacity-80">
 						<div
 							class="rounded-lg p-3 backdrop-blur-sm"
 							style="background-color: {accentColor}20; border: 1px solid {accentColor}40;"
@@ -187,7 +187,7 @@
 								<span class="text-xs font-medium text-white">Available for work</span>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					<!-- Floating decorative elements -->
 					<div class="absolute -bottom-6 -left-6 opacity-60">
