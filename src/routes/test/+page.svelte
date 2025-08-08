@@ -194,12 +194,12 @@
 	description="A seamless platform transforming food surplus into community nourishment through automated donation management."
 	images={{
 		macbook: '/img/surplusbite/desktop.png',
-		ipad: '/img/surplusbite/ipad.png',
-		iphone: '/img/surplusbite/iphone.png'
+		ipad: '/img/surplusbite/desktop.png',
+		iphone: '/img/surplusbite/desktop.png'
 	}}
 	orientation={{
 		ipad: 'portrait',
-		iphone: 'portrait'
+		iphone: 'landscape'
 	}}
 />
 

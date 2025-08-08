@@ -5,10 +5,10 @@
 	export let imageUrl: string =
 		'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2043&q=80';
 	export const altText: string = 'MacBook Pro Display Content';
-	export let imgDisplay: 'cover' | 'contain' = 'contain';
 	export let batteryLevel: number = 85; // Battery percentage
 	export let isDarkMode: boolean = false; // Dark/Light menu bar mode
 	export let deviceColor: 'silver' | 'space-gray' = 'silver'; // Device color variant
+	export let shadow: string = '#ffffff'; // Shadow color
 
 	// Types
 	type DeviceDimensions = {
@@ -145,7 +145,7 @@
 
 			<!-- Device shadow filter -->
 			<filter id="macbookDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
-				<feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.25" />
+				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color={shadow} flood-opacity="0.20" />
 			</filter>
 
 			<!-- Screen glow filter -->
@@ -180,17 +180,6 @@
 				stroke-width="1"
 			/>
 
-			<!-- Screen bezel -->
-			<!-- <rect
-				x="10"
-				y="10"
-				width={dimensions.device.width - 20}
-				height={dimensions.device.height - 20}
-				rx={radius.screen}
-				ry={radius.screen}
-				fill="url(#macbookBezelGradient)"
-			/> -->
-
 			<!-- Screen area -->
 			<rect
 				x="10"
@@ -210,7 +199,7 @@
 				y={10 + menuBarHeight}
 				width={dimensions.screen.width}
 				height={dimensions.screen.height - menuBarHeight}
-				preserveAspectRatio="xMidYMid slice"
+				preserveAspectRatio="xMidYMin slice"
 				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
 			/>
 
@@ -332,7 +321,7 @@
 				width={18 * (batteryLevel / 100)}
 				height="6"
 				rx="1"
-				fill="#10b981"
+				fill={menuBarColor.text}
 				opacity={menuBarColor.iconOpacity}
 			/>
 			<!-- Battery tip -->

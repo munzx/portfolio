@@ -3,6 +3,8 @@
 	export let type: 'cellular' | 'wifi' | 'battery' | 'bluetooth';
 	export let isPortrait: boolean = true;
 	export let batteryLevel: number = 80; // 0-100
+	export let iconColor: string = '#000000'; // Icon color
+	export let opacity: number = 1; // Icon opacity
 </script>
 
 {#if type === 'cellular'}
@@ -14,17 +16,19 @@
 			width="1.5"
 			height={barHeight * 1.5}
 			rx="0.75"
-			fill="#000000"
+			fill={iconColor}
+			{opacity}
 		/>
 	{/each}
 {:else if type === 'wifi'}
 	<!-- WiFi signal -->
 	<path
 		d="M2 2c2.76-2.76 7.24-2.76 10 0M4 4c1.66-1.66 4.34-1.66 6 0M6 6c0.55-0.55 1.45-1.45 2 0"
-		stroke="#000000"
+		stroke={iconColor}
 		stroke-width="1.2"
 		fill="none"
 		stroke-linecap="round"
+		{opacity}
 	/>
 {:else if type === 'battery'}
 	<!-- Battery outline -->
@@ -34,9 +38,10 @@
 		width={isPortrait ? '16' : '20'}
 		height={isPortrait ? '8' : '10'}
 		rx={isPortrait ? '1.5' : '2'}
-		stroke="#000000"
+		stroke={iconColor}
 		stroke-width="0.8"
 		fill="none"
+		{opacity}
 	/>
 	<!-- Battery fill based on level -->
 	<rect
@@ -46,6 +51,7 @@
 		height={isPortrait ? '5.6' : '7'}
 		rx={isPortrait ? '0.8' : '1'}
 		fill={batteryLevel > 20 ? '#34d399' : '#ef4444'}
+		{opacity}
 	/>
 	<!-- Battery tip -->
 	<rect
@@ -54,13 +60,15 @@
 		width="1.2"
 		height={isPortrait ? '4' : '5'}
 		rx={isPortrait ? '0.6' : '0.75'}
-		fill="#000000"
+		fill={iconColor}
+		{opacity}
 	/>
 {:else if type === 'bluetooth'}
 	<!-- Bluetooth icon -->
 	<path
 		d="M6 2h1l4 4-3 3 3 3-4 4h-1v-6l-2 2-1-1 3-3-3-3 1-1 2 2V2zm1 2v4l2-2-2-2zm0 8v4l2-2-2-2z"
-		fill="#000000"
+		fill={iconColor}
 		transform="scale(0.6)"
+		{opacity}
 	/>
 {/if}

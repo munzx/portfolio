@@ -169,7 +169,9 @@
 						style="background-color: {accentColor}"
 					></div>
 
-					<MacBookProMockup imageUrl={company.logo} imgDisplay="cover" />
+					<div class="w-5/6">
+						<MacBookProMockup imageUrl={company.logo} />
+					</div>
 
 					<!-- Achievements -->
 					{#if company.achievements && company.achievements.length > 0}

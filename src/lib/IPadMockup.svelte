@@ -8,6 +8,9 @@
 	export const altText: string = 'iPad Display Content';
 	export let orientation: 'portrait' | 'landscape' = 'landscape';
 	export let batteryLevel: number = 85; // Battery percentage
+	export let isDarkMode: boolean = false; // Dark/Light status bar mode
+	export let deviceColor: 'silver' | 'space-gray' | 'gold' | 'rose-gold' = 'silver'; // Device color variant
+	export let shadow: string = '#ffffff'; // Shadow color
 
 	// Types
 	type DeviceDimensions = {
@@ -41,6 +44,46 @@
 	$: radius = BORDER_RADIUS[orientation];
 	$: isPortrait = orientation === 'portrait';
 	$: statusBarHeight = 40; // iPad has consistent status bar height
+
+	// Color schemes based on device color and mode
+	$: deviceColors = {
+		silver: {
+			frame: ['#e5e7eb', '#d1d5db', '#9ca3af'],
+			stroke: '#9ca3af',
+			screenBorder: '#9ca3af' // Matches the stroke color
+		},
+		'space-gray': {
+			frame: ['#6b7280', '#4b5563', '#374151'],
+			stroke: '#374151',
+			screenBorder: '#374151' // Matches the stroke color
+		},
+		gold: {
+			frame: ['#f59e0b', '#d97706', '#b45309'],
+			stroke: '#b45309',
+			screenBorder: '#92400e' // Darker gold tone
+		},
+		'rose-gold': {
+			frame: ['#f472b6', '#ec4899', '#db2777'],
+			stroke: '#db2777',
+			screenBorder: '#be185d' // Darker rose gold tone
+		}
+	};
+
+	$: statusBarColors = {
+		light: {
+			background: 'rgba(255, 255, 255, 0.95)',
+			text: '#000000',
+			iconOpacity: 0.8
+		},
+		dark: {
+			background: 'rgba(0, 0, 0, 0.85)',
+			text: '#ffffff',
+			iconOpacity: 0.9
+		}
+	};
+
+	$: currentDeviceColor = deviceColors[deviceColor];
+	$: currentStatusBarColor = statusBarColors[isDarkMode ? 'dark' : 'light'];
 
 	// Helper functions
 	const updateTime = () => {
@@ -79,7 +122,7 @@
 			</mask>
 
 			<!-- Status bar mask - rounded top, straight bottom -->
-			<mask id="ipad-status-bar-mask">
+			<mask id="ipad-status-bar-mask-{orientation}">
 				<rect x="0" y="0" width="100%" height="100%" fill="black" />
 				<!-- Main rounded rectangle -->
 				<rect
@@ -103,8 +146,9 @@
 
 			<!-- iPad frame gradient (same as iPhone) -->
 			<linearGradient id="ipadFrameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-				<stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
-				<stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+				<stop offset="0%" style="stop-color:{currentDeviceColor.frame[0]};stop-opacity:1" />
+				<stop offset="50%" style="stop-color:{currentDeviceColor.frame[1]};stop-opacity:1" />
+				<stop offset="100%" style="stop-color:{currentDeviceColor.frame[2]};stop-opacity:1" />
 			</linearGradient>
 
 			<!-- Home indicator gradient background -->
@@ -121,7 +165,7 @@
 
 			<!-- Device shadow filter -->
 			<filter id="ipadDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
-				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color="#ffffff" flood-opacity="0.20" />
+				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color={shadow} flood-opacity="0.20" />
 			</filter>
 		</defs>
 
@@ -142,19 +186,8 @@
 				rx={radius.frame}
 				ry={radius.frame}
 				fill="url(#ipadFrameGradient)"
-				stroke="#0a0a0a"
+				stroke={currentDeviceColor.stroke}
 				stroke-width="1"
-			/>
-
-			<!-- Screen bezel with cutout -->
-			<rect
-				x="12"
-				y="12"
-				width={dimensions.device.width - 24}
-				height={dimensions.device.height - 24}
-				rx={radius.screen}
-				ry={radius.screen}
-				fill="#000000"
 			/>
 
 			<!-- Screen area inside the bezel -->
@@ -165,7 +198,7 @@
 				height={dimensions.device.height - 28}
 				rx={radius.screen}
 				ry={radius.screen}
-				fill="#000000"
+				fill={currentDeviceColor.screenBorder}
 			/>
 
 			<!-- Background image inside the screen area -->
@@ -174,9 +207,7 @@
 				x={17}
 				y={14 + statusBarHeight + 5}
 				width={dimensions.device.width - 32 - 2}
-				height={isPortrait
-					? dimensions.device.height - 31 - statusBarHeight - 4
-					: dimensions.device.height - 31 - statusBarHeight - 4}
+				height={dimensions.device.height - 31 - statusBarHeight - 4}
 				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
 				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
 			/>
@@ -187,12 +218,18 @@
 				y="14"
 				width={dimensions.device.width - 32 - 2}
 				height={statusBarHeight + 5}
-				fill="rgba(255, 255, 255, 0.95)"
-				mask="url(#ipad-status-bar-mask)"
+				fill={currentStatusBarColor.background}
+				mask="url(#ipad-status-bar-mask-{orientation})"
 			/>
 
 			<!-- Status bar content -->
-			{@render StatusBarContent(isPortrait, dimensions, currentTime, batteryLevel)}
+			{@render StatusBarContent(
+				isPortrait,
+				dimensions,
+				currentTime,
+				batteryLevel,
+				currentStatusBarColor
+			)}
 
 			<!-- Home indicator (for newer iPad style) -->
 			<!-- Background for better visibility -->
@@ -224,7 +261,8 @@
 	isPortrait: boolean,
 	dimensions: DeviceDimensions,
 	currentTime: string,
-	batteryLevel: number
+	batteryLevel: number,
+	statusBarColor: any
 )}
 	{#if isPortrait}
 		<!-- Time -->
@@ -234,7 +272,7 @@
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="10"
 			font-weight="600"
-			fill="#000000"
+			fill={statusBarColor.text}
 		>
 			{currentTime}
 		</text>
@@ -243,22 +281,43 @@
 		<g transform="translate({dimensions.device.width - 98}, 36)">
 			<!-- Cellular -->
 			<g transform="translate(8, -1)">
-				<StatusBarIcons type="cellular" {isPortrait} />
+				<StatusBarIcons
+					type="cellular"
+					{isPortrait}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 
 			<!-- WiFi -->
 			<g transform="translate(23, 0)">
-				<StatusBarIcons type="wifi" {isPortrait} />
+				<StatusBarIcons
+					type="wifi"
+					{isPortrait}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 
 			<!-- Bluetooth -->
 			<g transform="translate(40, -1)">
-				<StatusBarIcons type="bluetooth" {isPortrait} />
+				<StatusBarIcons
+					type="bluetooth"
+					{isPortrait}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 
 			<!-- Battery -->
 			<g transform="translate(55, 0)">
-				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
+				<StatusBarIcons
+					type="battery"
+					{isPortrait}
+					{batteryLevel}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 		</g>
 	{:else}
@@ -269,23 +328,44 @@
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="10"
 			font-weight="600"
-			fill="#000000"
+			fill={statusBarColor.text}
 		>
 			{currentTime}
 		</text>
 
 		<g transform="translate({dimensions.device.width - 98}, 36)">
 			<g transform="translate(5, -1)">
-				<StatusBarIcons type="cellular" {isPortrait} />
+				<StatusBarIcons
+					type="cellular"
+					{isPortrait}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 			<g transform="translate(22, 0)">
-				<StatusBarIcons type="wifi" {isPortrait} />
+				<StatusBarIcons
+					type="wifi"
+					{isPortrait}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 			<g transform="translate(38, 0)">
-				<StatusBarIcons type="bluetooth" {isPortrait} />
+				<StatusBarIcons
+					type="bluetooth"
+					{isPortrait}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 			<g transform="translate(54, 0)">
-				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
+				<StatusBarIcons
+					type="battery"
+					{isPortrait}
+					{batteryLevel}
+					iconColor={statusBarColor.text}
+					opacity={statusBarColor.iconOpacity}
+				/>
 			</g>
 		</g>
 	{/if}

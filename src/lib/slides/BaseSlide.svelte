@@ -5,11 +5,11 @@
 </script>
 
 <section
-	class="reveal relative flex min-h-auto w-screen snap-start flex-col justify-center
+	class="reveal relative flex h-full min-h-screen w-screen snap-start flex-col justify-center
 		   px-3 py-4
 		   sm:px-6 sm:py-6
 		   md:px-8 md:py-8
-		   lg:min-h-screen lg:p-0 {className}"
+		   lg:p-0 {className}"
 	style="background-color: {backgroundColor}; min-height: {minHeight};"
 >
 	<slot />
