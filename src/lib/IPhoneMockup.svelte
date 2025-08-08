@@ -132,6 +132,13 @@
 				<stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
 			</linearGradient>
 
+			<!-- Home indicator gradient background -->
+			<linearGradient id="homeIndicatorBackground" x1="0%" y1="0%" x2="0%" y2="100%">
+				<stop offset="0%" style="stop-color:#000000;stop-opacity:0.01" />
+				<stop offset="50%" style="stop-color:#000000;stop-opacity:0.05" />
+				<stop offset="100%" style="stop-color:#000000;stop-opacity:0.01" />
+			</linearGradient>
+
 			<!-- Home indicator shadow filter -->
 			<filter id="iphoneHomeIndicatorShadow" x="-50%" y="-50%" width="200%" height="200%">
 				<feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.15" />
@@ -139,7 +146,7 @@
 
 			<!-- Device shadow filter -->
 			<filter id="iphoneDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
-				<feDropShadow dx="1" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
+				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color="#ffffff" flood-opacity="0.20" />
 			</filter>
 		</defs>
 		<!-- Main device group -->
@@ -245,6 +252,16 @@
 			{@render StatusBarContent(isPortrait, dimensions, currentTime, batteryLevel)}
 
 			<!-- Home indicator -->
+			<!-- Background for better visibility -->
+			<rect
+				x={dimensions.device.width / 2 - 42}
+				y={isPortrait ? dimensions.device.height - 30 : dimensions.device.height - 25}
+				width="84"
+				height="13"
+				rx="6.5"
+				fill="url(#homeIndicatorBackground)"
+			/>
+			<!-- Main indicator -->
 			<rect
 				x={dimensions.device.width / 2 - 35}
 				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 20}

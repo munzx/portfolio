@@ -107,14 +107,21 @@
 				<stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
 			</linearGradient>
 
+			<!-- Home indicator gradient background -->
+			<linearGradient id="ipadHomeIndicatorBackground" x1="0%" y1="0%" x2="0%" y2="100%">
+				<stop offset="0%" style="stop-color:#000000;stop-opacity:0.01" />
+				<stop offset="50%" style="stop-color:#000000;stop-opacity:0.05" />
+				<stop offset="100%" style="stop-color:#000000;stop-opacity:0.01" />
+			</linearGradient>
+
 			<!-- Home indicator shadow filter -->
 			<filter id="ipadHomeIndicatorShadow" x="-50%" y="-50%" width="200%" height="200%">
-				<feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.15" />
+				<feDropShadow dx="0" dy="8" stdDeviation="1" flood-color="#000000" flood-opacity="0.15" />
 			</filter>
 
 			<!-- Device shadow filter -->
 			<filter id="ipadDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
-				<feDropShadow dx="1" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
+				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color="#ffffff" flood-opacity="0.20" />
 			</filter>
 		</defs>
 
@@ -188,6 +195,16 @@
 			{@render StatusBarContent(isPortrait, dimensions, currentTime, batteryLevel)}
 
 			<!-- Home indicator (for newer iPad style) -->
+			<!-- Background for better visibility -->
+			<rect
+				x={dimensions.device.width / 2 - 47}
+				y={isPortrait ? dimensions.device.height - 30 : dimensions.device.height - 27}
+				width="94"
+				height="13"
+				rx="6.5"
+				fill="url(#ipadHomeIndicatorBackground)"
+			/>
+			<!-- Main indicator -->
 			<rect
 				x={dimensions.device.width / 2 - 40}
 				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 22}
