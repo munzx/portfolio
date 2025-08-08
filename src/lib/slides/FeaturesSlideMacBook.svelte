@@ -14,7 +14,6 @@
 	export let title: string = 'Designed for<br />Creative Collaboration';
 	export let description: string =
 		"AuraFlow brings your entire creative process into one place. It's the tool your team has been waiting for.";
-	export let accentColor: string = '#0071e3';
 </script>
 
 <BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">

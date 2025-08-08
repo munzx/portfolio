@@ -1,80 +1,295 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+	import StatusBarIcons from './StatusBarIcons.svelte';
+
 	// Component props for reusability
 	export let imageUrl: string =
 		'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2043&q=80';
-	export let altText: string = 'iPad Display Content';
+	export const altText: string = 'iPad Display Content';
 	export let orientation: 'portrait' | 'landscape' = 'landscape';
+	export let batteryLevel: number = 85; // Battery percentage
+
+	// Types
+	type DeviceDimensions = {
+		svg: { width: number; height: number };
+		device: { width: number; height: number };
+	};
+
+	type BorderRadius = {
+		frame: number;
+		screen: number;
+		statusBar: number;
+	};
+
+	// Constants for device dimensions (iPad specific)
+	const DEVICE_DIMENSIONS: Record<'portrait' | 'landscape', DeviceDimensions> = {
+		portrait: { svg: { width: 400, height: 550 }, device: { width: 380, height: 530 } },
+		landscape: { svg: { width: 550, height: 400 }, device: { width: 530, height: 380 } }
+	} as const;
+
+	const BORDER_RADIUS: Record<'portrait' | 'landscape', BorderRadius> = {
+		portrait: { frame: 30, screen: 25, statusBar: 22 },
+		landscape: { frame: 30, screen: 25, statusBar: 22 }
+	} as const;
 
 	// Time functionality
 	let currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+	let timeInterval: number;
 
-	// Update time every minute
-	setInterval(() => {
+	// Computed dimensions (memoized)
+	$: dimensions = DEVICE_DIMENSIONS[orientation];
+	$: radius = BORDER_RADIUS[orientation];
+	$: isPortrait = orientation === 'portrait';
+	$: statusBarHeight = 40; // iPad has consistent status bar height
+
+	// Helper functions
+	const updateTime = () => {
 		currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-	}, 60000);
+	};
+
+	onMount(() => {
+		timeInterval = setInterval(updateTime, 60000);
+	});
+
+	onDestroy(() => {
+		if (timeInterval) clearInterval(timeInterval);
+	});
 </script>
 
-<div class="relative z-50 w-full">
-	<!-- iPad Frame -->
-	<div
-		class="relative w-full rounded-[25px] bg-black p-2 shadow-2xl {orientation === 'landscape'
-			? 'aspect-[4/3] max-w-[800px]'
-			: 'aspect-[3/4] max-w-[600px]'}"
+<div class="relative z-50 flex w-full justify-center">
+	<svg
+		width={dimensions.svg.width}
+		height={dimensions.svg.height}
+		viewBox="0 0 {dimensions.svg.width} {dimensions.svg.height}"
+		class="relative z-10"
 	>
-		<!-- Inner frame -->
-		<div class="relative h-full w-full overflow-hidden rounded-[20px] bg-black">
-			<!-- Screen -->
-			<div class="relative h-full w-full overflow-hidden rounded-[18px] bg-white">
-				<!-- Status Bar -->
-				<div
-					class="absolute top-2 right-4 left-4 z-20 flex items-center justify-between text-xs font-medium text-white drop-shadow-lg"
-				>
-					<span>{currentTime}</span>
-					<div class="flex items-center space-x-1.5">
-						<!-- Signal bars -->
-						<div class="flex space-x-0.5">
-							<div class="h-2 w-0.5 rounded-full bg-white"></div>
-							<div class="h-2.5 w-0.5 rounded-full bg-white"></div>
-							<div class="h-3 w-0.5 rounded-full bg-white"></div>
-							<div class="h-3.5 w-0.5 rounded-full bg-white"></div>
-						</div>
-						<!-- WiFi icon -->
-						<svg class="ml-1 h-3 w-3 fill-white" viewBox="0 0 24 24">
-							<path
-								d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.07 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"
-							/>
-						</svg>
-						<!-- Battery -->
-						<div class="ml-1.5 flex items-center">
-							<div class="relative h-2.5 w-5 rounded-sm border border-white">
-								<div class="absolute top-0.5 left-0.5 h-1.5 w-3.5 rounded-sm bg-green-400"></div>
-							</div>
-							<div class="ml-0.5 h-1.5 w-0.5 rounded-r-sm bg-white"></div>
-						</div>
-						<!-- Bluetooth icon -->
-						<svg class="ml-1 h-3 w-3 fill-white" viewBox="0 0 24 24">
-							<path
-								d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71L13.41 12l4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm0 12.34v-3.76l1.88 1.88L13 18.17z"
-							/>
-						</svg>
-					</div>
-				</div>
+		<defs>
+			<!-- Screen cutout mask for bezel -->
+			<mask id="ipad-bezel-mask">
+				<rect x="0" y="0" width="100%" height="100%" fill="white" />
+				<rect
+					x="8"
+					y="8"
+					width={dimensions.device.width - 16}
+					height={dimensions.device.height - 16}
+					rx={radius.statusBar}
+					ry={radius.statusBar}
+					fill="black"
+				/>
+			</mask>
 
-				<!-- Full Screen Image -->
-				<img src={imageUrl} alt={altText} class="inset-0 h-auto w-full object-cover" />
+			<!-- Status bar mask - rounded top, straight bottom -->
+			<mask id="ipad-status-bar-mask">
+				<path
+					d="M {8 + radius.statusBar} 8 
+					   L {dimensions.device.width - 8 - radius.statusBar} 8
+					   Q {dimensions.device.width - 8} 8 {dimensions.device.width - 8} {8 + radius.statusBar}
+					   L {dimensions.device.width - 8} {8 + statusBarHeight}
+					   L 8 {8 + statusBarHeight}
+					   L 8 {8 + radius.statusBar}
+					   Q 8 8 {8 + radius.statusBar} 8 Z"
+					fill="white"
+				/>
+			</mask>
 
-				<!-- Home Indicator (for newer iPads) -->
-				<div
-					class="absolute rounded-full bg-white opacity-70 {orientation === 'landscape'
-						? 'bottom-2 left-1/2 h-1.5 w-28 -translate-x-1/2'
-						: 'bottom-2 left-1/2 h-1.5 w-28 -translate-x-1/2'}"
-				></div>
-			</div>
-		</div>
-	</div>
+			<!-- iPad frame gradient (same as iPhone) -->
+			<linearGradient id="ipadFrameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+				<stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+				<stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+			</linearGradient>
 
-	<!-- Shadow/Reflection -->
-	<div
-		class="absolute right-[5%] -bottom-[8%] left-[5%] h-[12%] rounded-full bg-gradient-to-t from-gray-400 to-transparent opacity-20 blur-xl"
-	></div>
+			<!-- Home indicator shadow filter -->
+			<filter id="ipadHomeIndicatorShadow" x="-50%" y="-50%" width="200%" height="200%">
+				<feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.15" />
+			</filter>
+
+			<!-- Device shadow filter -->
+			<filter id="ipadDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
+				<feDropShadow dx="1" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
+			</filter>
+		</defs>
+
+		<!-- Main device group -->
+		<g
+			transform="translate({(dimensions.svg.width - dimensions.device.width) / 2}, {(dimensions.svg
+				.height -
+				dimensions.device.height) /
+				2})"
+			filter="url(#ipadDeviceShadow)"
+		>
+			<!-- Outer frame -->
+			<rect
+				x="0"
+				y="0"
+				width={dimensions.device.width}
+				height={dimensions.device.height}
+				rx={radius.frame}
+				ry={radius.frame}
+				fill="url(#ipadFrameGradient)"
+				stroke="#0a0a0a"
+				stroke-width="1"
+			/>
+
+			<!-- Home button (for older iPad style) -->
+			{#if isPortrait}
+				<circle
+					cx={dimensions.device.width / 2}
+					cy={dimensions.device.height - 20}
+					r="12"
+					fill="#f8f8f8"
+					stroke="#d0d0d0"
+					stroke-width="1"
+				/>
+				<circle
+					cx={dimensions.device.width / 2}
+					cy={dimensions.device.height - 20}
+					r="8"
+					fill="none"
+					stroke="#e0e0e0"
+					stroke-width="0.5"
+				/>
+			{:else}
+				<circle
+					cx={dimensions.device.width - 20}
+					cy={dimensions.device.height / 2}
+					r="12"
+					fill="#f8f8f8"
+					stroke="#d0d0d0"
+					stroke-width="1"
+				/>
+				<circle
+					cx={dimensions.device.width - 20}
+					cy={dimensions.device.height / 2}
+					r="8"
+					fill="none"
+					stroke="#e0e0e0"
+					stroke-width="0.5"
+				/>
+			{/if}
+
+			<!-- Screen bezel with cutout -->
+			<rect
+				x="6"
+				y="6"
+				width={dimensions.device.width - 12}
+				height={dimensions.device.height - 12}
+				rx={radius.screen}
+				ry={radius.screen}
+				fill="#000000"
+				mask="url(#ipad-bezel-mask)"
+			/>
+
+			<!-- Background image inside the screen area -->
+			<image
+				href={imageUrl}
+				x="8"
+				y={isPortrait ? '8' : `${8 + statusBarHeight}`}
+				width={dimensions.device.width - 16}
+				height={isPortrait
+					? dimensions.device.height - 16
+					: dimensions.device.height - 16 - statusBarHeight}
+				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
+				clip-path={isPortrait
+					? `inset(0 round ${radius.statusBar}px)`
+					: `inset(0 round 0 0 ${radius.statusBar}px ${radius.statusBar}px)`}
+			/>
+
+			<!-- Status bar overlay with rounded top, straight bottom -->
+			<rect
+				x="8"
+				y="8"
+				width={dimensions.device.width - 16}
+				height={statusBarHeight}
+				fill="#ffffff"
+				mask="url(#ipad-status-bar-mask)"
+			/>
+
+			<!-- Status bar content -->
+			{@render StatusBarContent(isPortrait, dimensions, currentTime, batteryLevel)}
+
+			<!-- Home indicator (for newer iPad style) -->
+			<rect
+				x={dimensions.device.width / 2 - 40}
+				y={isPortrait ? dimensions.device.height - 12 : dimensions.device.height - 12}
+				width="80"
+				height="3"
+				rx="1.5"
+				fill="#ffffff"
+				opacity="0.7"
+				filter="url(#ipadHomeIndicatorShadow)"
+			/>
+		</g>
+	</svg>
 </div>
+
+<!-- Status Bar Component -->
+{#snippet StatusBarContent(
+	isPortrait: boolean,
+	dimensions: DeviceDimensions,
+	currentTime: string,
+	batteryLevel: number
+)}
+	{#if isPortrait}
+		<!-- Time -->
+		<text
+			x="12"
+			y="32"
+			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+			font-size="14"
+			font-weight="600"
+			fill="#000000"
+		>
+			{currentTime}
+		</text>
+
+		<!-- Right status icons -->
+		<g transform="translate({dimensions.device.width - 92}, 26)">
+			<!-- Cellular -->
+			<g>
+				<StatusBarIcons type="cellular" {isPortrait} />
+			</g>
+
+			<!-- WiFi -->
+			<g transform="translate(20, 0)">
+				<StatusBarIcons type="wifi" {isPortrait} />
+			</g>
+
+			<!-- Bluetooth -->
+			<g transform="translate(35, 0)">
+				<StatusBarIcons type="bluetooth" {isPortrait} />
+			</g>
+
+			<!-- Battery -->
+			<g transform="translate(55, 0)">
+				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
+			</g>
+		</g>
+	{:else}
+		<!-- Landscape status bar -->
+		<text
+			x="12"
+			y="32"
+			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+			font-size="14"
+			font-weight="600"
+			fill="#000000"
+		>
+			{currentTime}
+		</text>
+
+		<g transform="translate({dimensions.device.width - 92}, 26)">
+			<g>
+				<StatusBarIcons type="cellular" {isPortrait} />
+			</g>
+			<g transform="translate(20, 0)">
+				<StatusBarIcons type="wifi" {isPortrait} />
+			</g>
+			<g transform="translate(35, 0)">
+				<StatusBarIcons type="bluetooth" {isPortrait} />
+			</g>
+			<g transform="translate(55, 0)">
+				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
+			</g>
+		</g>
+	{/if}
+{/snippet}
