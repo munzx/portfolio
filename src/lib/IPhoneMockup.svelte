@@ -90,43 +90,56 @@
 	>
 		<defs>
 			<!-- Screen cutout mask for bezel -->
-			<mask id="bezel-mask">
+			<mask id="iphone-bezel-mask">
 				<rect x="0" y="0" width="100%" height="100%" fill="white" />
 				<rect
 					x="10"
 					y="10"
 					width={dimensions.device.width - 20}
 					height={dimensions.device.height - 20}
-					rx={radius.statusBar}
-					ry={radius.statusBar}
+					rx={radius.screen}
+					ry={radius.screen}
 					fill="black"
 				/>
 			</mask>
 
 			<!-- Status bar mask - rounded top, straight bottom -->
-			<mask id="status-bar-mask">
-				<!-- Create a path that has rounded top corners but straight bottom -->
-				<path
-					d="M {10 + radius.statusBar} 10 
-					   L {dimensions.device.width - 10 - radius.statusBar} 10
-					   Q {dimensions.device.width - 10} 10 {dimensions.device.width - 10} {10 + radius.statusBar}
-					   L {dimensions.device.width - 10} {10 + (isPortrait ? 50 : 38)}
-					   L 10 {10 + (isPortrait ? 50 : 38)}
-					   L 10 {10 + radius.statusBar}
-					   Q 10 10 {10 + radius.statusBar} 10 Z"
+			<mask id="iphone-status-bar-mask">
+				<rect x="0" y="0" width="100%" height="100%" fill="black" />
+				<!-- Main rounded rectangle -->
+				<rect
+					x="13"
+					y="12"
+					width={dimensions.device.width - 26}
+					height={statusBarHeight + 30}
+					rx={radius.screen}
+					ry={radius.screen}
+					fill="white"
+				/>
+				<!-- Overlay rectangle to make bottom straight -->
+				<rect
+					x="13"
+					y={10 + radius.screen}
+					width={dimensions.device.width - 26}
+					height={statusBarHeight + 15 - radius.screen}
 					fill="white"
 				/>
 			</mask>
 
 			<!-- Frame gradient -->
-			<linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+			<linearGradient id="iphoneFrameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
 				<stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
 				<stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
 			</linearGradient>
 
 			<!-- Home indicator shadow filter -->
-			<filter id="homeIndicatorShadow" x="-50%" y="-50%" width="200%" height="200%">
-				<feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.3" />
+			<filter id="iphoneHomeIndicatorShadow" x="-50%" y="-50%" width="200%" height="200%">
+				<feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.15" />
+			</filter>
+
+			<!-- Device shadow filter -->
+			<filter id="iphoneDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
+				<feDropShadow dx="1" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
 			</filter>
 		</defs>
 		<!-- Main device group -->
@@ -135,6 +148,7 @@
 				.height -
 				dimensions.device.height) /
 				2})"
+			filter="url(#iphoneDeviceShadow)"
 		>
 			<!-- Outer frame -->
 			<rect
@@ -144,7 +158,7 @@
 				height={dimensions.device.height}
 				rx={radius.frame}
 				ry={radius.frame}
-				fill="url(#frameGradient)"
+				fill="url(#iphoneFrameGradient)"
 				stroke="#0a0a0a"
 				stroke-width="1"
 			/>
@@ -170,32 +184,40 @@
 				rx={radius.screen}
 				ry={radius.screen}
 				fill="#000000"
-				mask="url(#bezel-mask)"
+			/>
+
+			<!-- Screen area inside the bezel -->
+			<rect
+				x="10"
+				y="10"
+				width={dimensions.device.width - 20}
+				height={dimensions.device.height - 20}
+				rx={radius.screen}
+				ry={radius.screen}
+				fill="#000000"
 			/>
 
 			<!-- Background image inside the screen area -->
 			<image
 				href={imageUrl}
-				x="10"
-				y={isPortrait ? '10' : `${10 + statusBarHeight}`}
-				width={dimensions.device.width - 20}
+				x="13"
+				y={10 + statusBarHeight + 5}
+				width={dimensions.device.width - 26}
 				height={isPortrait
-					? dimensions.device.height - 20
-					: dimensions.device.height - 20 - statusBarHeight}
+					? dimensions.device.height - 23 - statusBarHeight - 5
+					: dimensions.device.height - 23 - statusBarHeight - 5}
 				preserveAspectRatio="xMidYMin slice"
-				clip-path={isPortrait
-					? `inset(0 round ${radius.statusBar}px)`
-					: `inset(0 round 0 0 ${radius.statusBar}px ${radius.statusBar}px)`}
+				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
 			/>
 
 			<!-- Status bar overlay with rounded top, straight bottom -->
 			<rect
-				x="10"
+				x="13"
 				y="10"
-				width={dimensions.device.width - 20}
-				height={statusBarHeight}
-				fill="#ffffff"
-				mask="url(#status-bar-mask)"
+				width={dimensions.device.width - 26}
+				height={statusBarHeight + 5}
+				fill="rgba(255, 255, 255, 0.95)"
+				mask="url(#iphone-status-bar-mask)"
 			/>
 
 			<!-- Dynamic Island -->
@@ -225,13 +247,13 @@
 			<!-- Home indicator -->
 			<rect
 				x={dimensions.device.width / 2 - 35}
-				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 15}
+				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 20}
 				width="70"
 				height="3"
 				rx="1.5"
 				fill="#ffffff"
-				opacity="0.9"
-				filter="url(#homeIndicatorShadow)"
+				opacity="0.8"
+				filter="url(#iphoneHomeIndicatorShadow)"
 			/>
 		</g>
 	</svg>
@@ -247,7 +269,7 @@
 	{#if isPortrait}
 		<!-- Time -->
 		<text
-			x="15"
+			x="18"
 			y="42"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="13"
@@ -258,7 +280,7 @@
 		</text>
 
 		<!-- Right status icons -->
-		<g transform="translate({dimensions.device.width - 70}, 38)">
+		<g transform="translate({dimensions.device.width - 73}, 38)">
 			<!-- Cellular -->
 			<g>
 				<StatusBarIcons type="cellular" {isPortrait} />
@@ -277,7 +299,7 @@
 	{:else}
 		<!-- Landscape status bar -->
 		<text
-			x="20"
+			x="23"
 			y="32"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="12"
@@ -287,7 +309,7 @@
 			{currentTime}
 		</text>
 
-		<g transform="translate({dimensions.device.width - 95}, 26)">
+		<g transform="translate({dimensions.device.width - 98}, 26)">
 			<g>
 				<StatusBarIcons type="cellular" {isPortrait} />
 			</g>

@@ -68,26 +68,35 @@
 			<mask id="ipad-bezel-mask">
 				<rect x="0" y="0" width="100%" height="100%" fill="white" />
 				<rect
-					x="8"
-					y="8"
-					width={dimensions.device.width - 16}
-					height={dimensions.device.height - 16}
-					rx={radius.statusBar}
-					ry={radius.statusBar}
+					x="14"
+					y="14"
+					width={dimensions.device.width - 28}
+					height={dimensions.device.height - 28}
+					rx={radius.screen}
+					ry={radius.screen}
 					fill="black"
 				/>
 			</mask>
 
 			<!-- Status bar mask - rounded top, straight bottom -->
 			<mask id="ipad-status-bar-mask">
-				<path
-					d="M {8 + radius.statusBar} 8 
-					   L {dimensions.device.width - 8 - radius.statusBar} 8
-					   Q {dimensions.device.width - 8} 8 {dimensions.device.width - 8} {8 + radius.statusBar}
-					   L {dimensions.device.width - 8} {8 + statusBarHeight}
-					   L 8 {8 + statusBarHeight}
-					   L 8 {8 + radius.statusBar}
-					   Q 8 8 {8 + radius.statusBar} 8 Z"
+				<rect x="0" y="0" width="100%" height="100%" fill="black" />
+				<!-- Main rounded rectangle -->
+				<rect
+					x={17}
+					y="16"
+					width={dimensions.device.width - 32 - 2}
+					height={statusBarHeight + 4}
+					rx={radius.screen}
+					ry={radius.screen}
+					fill="white"
+				/>
+				<!-- Overlay rectangle to make bottom straight -->
+				<rect
+					x={17}
+					y={14 + radius.screen}
+					width={dimensions.device.width - 32 - 2}
+					height={statusBarHeight + 5 - radius.screen}
 					fill="white"
 				/>
 			</mask>
@@ -130,77 +139,48 @@
 				stroke-width="1"
 			/>
 
-			<!-- Home button (for older iPad style) -->
-			{#if isPortrait}
-				<circle
-					cx={dimensions.device.width / 2}
-					cy={dimensions.device.height - 20}
-					r="12"
-					fill="#f8f8f8"
-					stroke="#d0d0d0"
-					stroke-width="1"
-				/>
-				<circle
-					cx={dimensions.device.width / 2}
-					cy={dimensions.device.height - 20}
-					r="8"
-					fill="none"
-					stroke="#e0e0e0"
-					stroke-width="0.5"
-				/>
-			{:else}
-				<circle
-					cx={dimensions.device.width - 20}
-					cy={dimensions.device.height / 2}
-					r="12"
-					fill="#f8f8f8"
-					stroke="#d0d0d0"
-					stroke-width="1"
-				/>
-				<circle
-					cx={dimensions.device.width - 20}
-					cy={dimensions.device.height / 2}
-					r="8"
-					fill="none"
-					stroke="#e0e0e0"
-					stroke-width="0.5"
-				/>
-			{/if}
-
 			<!-- Screen bezel with cutout -->
 			<rect
-				x="6"
-				y="6"
-				width={dimensions.device.width - 12}
-				height={dimensions.device.height - 12}
+				x="12"
+				y="12"
+				width={dimensions.device.width - 24}
+				height={dimensions.device.height - 24}
 				rx={radius.screen}
 				ry={radius.screen}
 				fill="#000000"
-				mask="url(#ipad-bezel-mask)"
+			/>
+
+			<!-- Screen area inside the bezel -->
+			<rect
+				x="14"
+				y="14"
+				width={dimensions.device.width - 28}
+				height={dimensions.device.height - 28}
+				rx={radius.screen}
+				ry={radius.screen}
+				fill="#000000"
 			/>
 
 			<!-- Background image inside the screen area -->
 			<image
 				href={imageUrl}
-				x="8"
-				y={isPortrait ? '8' : `${8 + statusBarHeight}`}
-				width={dimensions.device.width - 16}
+				x={17}
+				y={14 + statusBarHeight + 5}
+				width={dimensions.device.width - 32 - 2}
 				height={isPortrait
-					? dimensions.device.height - 16
-					: dimensions.device.height - 16 - statusBarHeight}
+					? dimensions.device.height - 31 - statusBarHeight - 4
+					: dimensions.device.height - 31 - statusBarHeight - 4}
 				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
-				clip-path={isPortrait
-					? `inset(0 round ${radius.statusBar}px)`
-					: `inset(0 round 0 0 ${radius.statusBar}px ${radius.statusBar}px)`}
+				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
 			/>
 
 			<!-- Status bar overlay with rounded top, straight bottom -->
 			<rect
-				x="8"
-				y="8"
-				width={dimensions.device.width - 16}
-				height={statusBarHeight}
-				fill="#ffffff"
+				x={17}
+				y="14"
+				width={dimensions.device.width - 32 - 2}
+				height={statusBarHeight + 5}
+				fill="rgba(255, 255, 255, 0.95)"
 				mask="url(#ipad-status-bar-mask)"
 			/>
 
@@ -210,7 +190,7 @@
 			<!-- Home indicator (for newer iPad style) -->
 			<rect
 				x={dimensions.device.width / 2 - 40}
-				y={isPortrait ? dimensions.device.height - 12 : dimensions.device.height - 12}
+				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 20}
 				width="80"
 				height="3"
 				rx="1.5"
@@ -232,8 +212,8 @@
 	{#if isPortrait}
 		<!-- Time -->
 		<text
-			x="12"
-			y="32"
+			x="18"
+			y="42"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="14"
 			font-weight="600"
@@ -243,7 +223,7 @@
 		</text>
 
 		<!-- Right status icons -->
-		<g transform="translate({dimensions.device.width - 92}, 26)">
+		<g transform="translate({dimensions.device.width - 98}, 36)">
 			<!-- Cellular -->
 			<g>
 				<StatusBarIcons type="cellular" {isPortrait} />
@@ -267,8 +247,8 @@
 	{:else}
 		<!-- Landscape status bar -->
 		<text
-			x="12"
-			y="32"
+			x="18"
+			y="42"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="14"
 			font-weight="600"
@@ -277,7 +257,7 @@
 			{currentTime}
 		</text>
 
-		<g transform="translate({dimensions.device.width - 92}, 26)">
+		<g transform="translate({dimensions.device.width - 98}, 36)">
 			<g>
 				<StatusBarIcons type="cellular" {isPortrait} />
 			</g>
