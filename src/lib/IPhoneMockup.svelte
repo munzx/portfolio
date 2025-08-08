@@ -269,10 +269,10 @@
 	{#if isPortrait}
 		<!-- Time -->
 		<text
-			x="18"
-			y="42"
+			x="23"
+			y="40"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-			font-size="13"
+			font-size="10"
 			font-weight="600"
 			fill="#000000"
 		>
@@ -280,19 +280,19 @@
 		</text>
 
 		<!-- Right status icons -->
-		<g transform="translate({dimensions.device.width - 73}, 38)">
+		<g transform="translate({dimensions.device.width - 80}, 30)">
 			<!-- Cellular -->
-			<g>
+			<g transform="translate(0, 2)">
 				<StatusBarIcons type="cellular" {isPortrait} />
 			</g>
 
 			<!-- WiFi -->
-			<g transform="translate(20, -3)">
+			<g transform="translate(17, 3)">
 				<StatusBarIcons type="wifi" {isPortrait} />
 			</g>
 
 			<!-- Battery -->
-			<g transform="translate(38, -4)">
+			<g transform="translate(38, 3)">
 				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
 			</g>
 		</g>
@@ -300,7 +300,7 @@
 		<!-- Landscape status bar -->
 		<text
 			x="23"
-			y="32"
+			y="36"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
 			font-size="12"
 			font-weight="600"
@@ -310,13 +310,13 @@
 		</text>
 
 		<g transform="translate({dimensions.device.width - 98}, 26)">
-			<g>
+			<g transform="translate(12, 3)">
 				<StatusBarIcons type="cellular" {isPortrait} />
 			</g>
-			<g transform="translate(28, -3)">
+			<g transform="translate(28, 3)">
 				<StatusBarIcons type="wifi" {isPortrait} />
 			</g>
-			<g transform="translate(48, -4)">
+			<g transform="translate(48, 3)">
 				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
 			</g>
 		</g>

@@ -190,7 +190,7 @@
 			<!-- Home indicator (for newer iPad style) -->
 			<rect
 				x={dimensions.device.width / 2 - 40}
-				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 20}
+				y={isPortrait ? dimensions.device.height - 25 : dimensions.device.height - 22}
 				width="80"
 				height="3"
 				rx="1.5"
@@ -212,10 +212,10 @@
 	{#if isPortrait}
 		<!-- Time -->
 		<text
-			x="18"
+			x="22"
 			y="42"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-			font-size="14"
+			font-size="10"
 			font-weight="600"
 			fill="#000000"
 		>
@@ -225,17 +225,17 @@
 		<!-- Right status icons -->
 		<g transform="translate({dimensions.device.width - 98}, 36)">
 			<!-- Cellular -->
-			<g>
+			<g transform="translate(8, -1)">
 				<StatusBarIcons type="cellular" {isPortrait} />
 			</g>
 
 			<!-- WiFi -->
-			<g transform="translate(20, 0)">
+			<g transform="translate(23, 0)">
 				<StatusBarIcons type="wifi" {isPortrait} />
 			</g>
 
 			<!-- Bluetooth -->
-			<g transform="translate(35, 0)">
+			<g transform="translate(40, -1)">
 				<StatusBarIcons type="bluetooth" {isPortrait} />
 			</g>
 
@@ -247,10 +247,10 @@
 	{:else}
 		<!-- Landscape status bar -->
 		<text
-			x="18"
+			x="22"
 			y="42"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-			font-size="14"
+			font-size="10"
 			font-weight="600"
 			fill="#000000"
 		>
@@ -258,16 +258,16 @@
 		</text>
 
 		<g transform="translate({dimensions.device.width - 98}, 36)">
-			<g>
+			<g transform="translate(5, -1)">
 				<StatusBarIcons type="cellular" {isPortrait} />
 			</g>
-			<g transform="translate(20, 0)">
+			<g transform="translate(22, 0)">
 				<StatusBarIcons type="wifi" {isPortrait} />
 			</g>
-			<g transform="translate(35, 0)">
+			<g transform="translate(38, 0)">
 				<StatusBarIcons type="bluetooth" {isPortrait} />
 			</g>
-			<g transform="translate(55, 0)">
+			<g transform="translate(54, 0)">
 				<StatusBarIcons type="battery" {isPortrait} {batteryLevel} />
 			</g>
 		</g>
