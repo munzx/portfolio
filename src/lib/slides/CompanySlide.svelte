@@ -57,7 +57,7 @@
 		<!-- Title & Subtitle -->
 		<div class="space-y-4">
 			<h1
-				class="header text-[clamp(3rem,6vw,5rem)] leading-tight font-semibold tracking-tight text-white"
+				class="header text-[clamp(3rem,6vw,7rem)] leading-tight font-semibold tracking-tight text-white"
 			>
 				{title}
 			</h1>

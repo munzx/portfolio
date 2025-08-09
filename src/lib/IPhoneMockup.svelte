@@ -150,28 +150,52 @@
 				/>
 			</mask>
 
-			<!-- Status bar mask - rounded top, straight bottom -->
-			<mask id="iphone-status-bar-mask">
-				<rect x="0" y="0" width="100%" height="100%" fill="black" />
-				<!-- Main rounded rectangle -->
-				<rect
-					x="13"
-					y="12"
-					width={dimensions.device.width - 26}
-					height={statusBarHeight + 30}
-					rx={radius.screen}
-					ry={radius.screen}
-					fill="white"
-				/>
-				<!-- Overlay rectangle to make bottom straight -->
-				<rect
-					x="13"
-					y={10 + radius.screen}
-					width={dimensions.device.width - 26}
-					height={statusBarHeight + 15 - radius.screen}
-					fill="white"
-				/>
-			</mask>
+			<!-- Status bar masks - separate for portrait and landscape -->
+			{#if isPortrait}
+				<mask id="iphone-status-bar-mask-portrait">
+					<rect x="0" y="0" width="100%" height="100%" fill="black" />
+					<!-- Main rounded rectangle for portrait -->
+					<rect
+						x="13"
+						y="13"
+						width={dimensions.device.width - 26}
+						height={statusBarHeight + 30}
+						rx={radius.screen}
+						ry={radius.screen}
+						fill="white"
+					/>
+					<!-- Overlay rectangle to make bottom straight for portrait -->
+					<rect
+						x="13"
+						y={13 + radius.screen}
+						width={dimensions.device.width - 26}
+						height={statusBarHeight + 15 - radius.screen}
+						fill="white"
+					/>
+				</mask>
+			{:else}
+				<mask id="iphone-status-bar-mask-landscape">
+					<rect x="0" y="0" width="100%" height="100%" fill="black" />
+					<!-- Main rounded rectangle for landscape -->
+					<rect
+						x="13"
+						y="13"
+						width={dimensions.device.width - 26}
+						height={statusBarHeight + 20}
+						rx={radius.screen}
+						ry={radius.screen}
+						fill="white"
+					/>
+					<!-- Overlay rectangle to make bottom straight for landscape -->
+					<rect
+						x="13"
+						y={13 + radius.screen}
+						width={dimensions.device.width - 26}
+						height={statusBarHeight + 10 - radius.screen}
+						fill="white"
+					/>
+				</mask>
+			{/if}
 
 			<!-- Frame gradient -->
 			<linearGradient id="iphoneFrameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -245,9 +269,9 @@
 			<image
 				href={imageUrl}
 				x="13"
-				y={10 + statusBarHeight + 5}
+				y={13 + statusBarHeight + 5}
 				width={dimensions.device.width - 26}
-				height={dimensions.device.height - 23 - statusBarHeight - 5}
+				height={dimensions.device.height - 26 - statusBarHeight - 5}
 				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
 				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
 			/>
@@ -255,11 +279,13 @@
 			<!-- Status bar overlay with rounded top, straight bottom -->
 			<rect
 				x="13"
-				y="10"
+				y="13"
 				width={dimensions.device.width - 26}
 				height={statusBarHeight + 5}
 				fill={currentStatusBarColor.background}
-				mask="url(#iphone-status-bar-mask)"
+				mask={isPortrait
+					? 'url(#iphone-status-bar-mask-portrait)'
+					: 'url(#iphone-status-bar-mask-landscape)'}
 			/>
 
 			<!-- Dynamic Island -->

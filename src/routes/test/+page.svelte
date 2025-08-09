@@ -216,8 +216,8 @@
 		iphone: '/img/surplusbite/desktop.png'
 	}}
 	orientation={{
-		ipad: 'portrait',
-		iphone: 'landscape'
+		ipad: 'landscape',
+		iphone: 'portrait'
 	}}
 />
 
