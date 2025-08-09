@@ -25,7 +25,7 @@
 	};
 </script>
 
-<BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
+<BaseSlide className=" text-[#f5f5f7]">
 	<div class="container mx-auto flex h-full max-w-7xl flex-col justify-center px-8">
 		<div class="mb-2 text-center">
 			<h2 class="mb-4 text-6xl leading-tight font-semibold tracking-tight text-white">

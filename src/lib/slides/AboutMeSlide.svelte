@@ -16,17 +16,17 @@
 	export let accentColor: string = '#0071e3';
 </script>
 
-<BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
+<BaseSlide className="relative text-[#f5f5f7]">
 	<!-- Dynamic gradient background -->
-	<div class="absolute inset-0 opacity-5">
+	<!-- <div class="absolute inset-0 opacity-5">
 		<div
 			class="h-full w-full"
 			style="background: radial-gradient(circle at center, {accentColor}15 0%, transparent 70%)"
 		></div>
-	</div>
+	</div> -->
 
 	<!-- Floating geometric shapes -->
-	<div class="pointer-events-none absolute inset-0 overflow-hidden">
+	<!-- <div class="pointer-events-none absolute inset-0 overflow-hidden">
 		<div
 			class="animate-pulse-slow absolute top-1/4 left-1/4 h-32 w-32 rounded-full opacity-10 blur-xl"
 			style="background-color: {accentColor}"
@@ -35,7 +35,7 @@
 			class="animate-pulse-slow absolute right-1/4 bottom-1/3 h-24 w-24 rounded-full opacity-5 blur-lg"
 			style="background-color: {accentColor}; animation-delay: 2s;"
 		></div>
-	</div>
+	</div> -->
 
 	<div class="relative z-10 flex h-full w-full max-w-7xl items-center px-8">
 		<div class="grid w-full items-center gap-16 lg:grid-cols-2 lg:grid-rows-1">
@@ -170,10 +170,10 @@
 						</div>
 
 						<!-- Decorative ring -->
-						<div
+						<!-- <div
 							class="absolute inset-0 rounded-full border-2 opacity-30"
 							style="border-color: {accentColor}"
-						></div>
+						></div> -->
 					</div>
 
 					<!-- Floating status indicator -->
@@ -190,7 +190,7 @@
 					</div> -->
 
 					<!-- Floating decorative elements -->
-					<div class="absolute -bottom-6 -left-6 opacity-60">
+					<!-- <div class="absolute -bottom-6 -left-6 opacity-60">
 						<div
 							class="rounded-full p-4"
 							style="background-color: {accentColor}15; border: 1px solid {accentColor}25;"
@@ -201,7 +201,7 @@
 								/>
 							</svg>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

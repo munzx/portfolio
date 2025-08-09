@@ -29,14 +29,14 @@
 	export let stats: Array<{ label: string; value: string }> = [];
 </script>
 
-<BaseSlide className="flex-col lg:flex-row text-[#f5f5f7]">
+<BaseSlide className="lg:flex-row text-[#f5f5f7]">
 	<!-- Dynamic gradient background -->
-	<div class="absolute inset-0 opacity-5">
+	<!-- <div class="absolute inset-0 opacity-5">
 		<div
 			class="h-full w-full"
 			style="background: radial-gradient(circle at center, {accentColor}15 0%, transparent 70%)"
 		></div>
-	</div>
+	</div> -->
 
 	<!-- Floating geometric shapes -->
 	<div class="pointer-events-none absolute inset-0 overflow-hidden">
@@ -51,7 +51,9 @@
 	</div>
 
 	<!-- Company Info Section -->
-	<div class="flex h-full w-full flex-col justify-center space-y-6 p-2 lg:w-fit">
+	<div
+		class="flex h-full w-full flex-col justify-center space-y-6 p-2 lg:w-fit lg:justify-end lg:px-8"
+	>
 		<!-- Title & Subtitle -->
 		<div class="space-y-4">
 			<h1
@@ -177,7 +179,7 @@
 	</div>
 
 	<!-- Logo, Mockup, and Achievements Section -->
-	<div class="flex h-full w-full flex-col items-center justify-center p-4 lg:w-fit lg:justify-end">
+	<div class="flex h-full w-full flex-col items-center justify-center p-4 lg:w-1/2 lg:justify-end">
 		<div class="relative w-full max-w-lg lg:w-full lg:max-w-none">
 			<!-- Glow effect behind the logo -->
 			<div
@@ -190,7 +192,7 @@
 				<MacBookProMockup imageUrl={company.logo} />
 
 				<!-- Floating badge - Top right of mockup -->
-				<div class="absolute -top-3 -right-3 z-50 opacity-30">
+				<!-- <div class="absolute -top-3 -right-3 z-50 opacity-30">
 					<div
 						class="rounded-full border border-white/10 bg-gradient-to-t from-gray-400/20 to-gray-200/20 p-2 backdrop-blur-sm md:p-3"
 					>
@@ -204,7 +206,7 @@
 							/>
 						</svg>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<!-- Achievements -->
@@ -302,65 +304,5 @@
 		background-clip: text;
 		pointer-events: none;
 		z-index: -1;
-	}
-
-	/* Responsive adjustments */
-	@media (max-width: 1024px) {
-		.grid {
-			grid-template-columns: 1fr;
-			gap: 2rem;
-		}
-
-		.lg\:justify-end {
-			justify-content: center;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.px-4 {
-			padding-left: 0.75rem;
-			padding-right: 0.75rem;
-		}
-
-		.gap-8 {
-			gap: 1.5rem;
-		}
-
-		.space-y-6 > * + * {
-			margin-top: 1rem;
-		}
-
-		.text-\[clamp\(3rem\,6vw\,5rem\)\] {
-			font-size: clamp(2rem, 8vw, 3.5rem);
-		}
-
-		.text-\[clamp\(1\.5rem\,3vw\,2rem\)\] {
-			font-size: clamp(1.2rem, 4vw, 1.8rem);
-		}
-	}
-
-	@media (max-width: 640px) {
-		.grid-cols-1 {
-			grid-template-columns: 1fr;
-		}
-
-		.gap-6 {
-			gap: 0.75rem;
-		}
-
-		.lg\:gap-8 {
-			gap: 0.75rem;
-		}
-	}
-
-	/* Ensure proper two-column layout on desktop */
-	@media (min-width: 1024px) {
-		.lg\:grid-cols-2 {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.lg\:w-full {
-			width: 100%;
-		}
 	}
 </style>

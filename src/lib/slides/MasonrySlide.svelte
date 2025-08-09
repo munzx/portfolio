@@ -195,22 +195,6 @@
 	:global(.text-shadow) {
 		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 	}
-
-	/* Smooth animations */
-	@keyframes pulse-slow {
-		0%,
-		100% {
-			opacity: 0.05;
-		}
-		50% {
-			opacity: 0.15;
-		}
-	}
-
-	.animate-pulse-slow {
-		animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-	}
-
 	/* Enhanced hover effects */
 	.group:hover .group-hover\:scale-110 {
 		transform: scale(1.1);

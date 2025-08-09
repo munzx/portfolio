@@ -49,6 +49,24 @@
 			skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'AWS'],
 			github: 'https://github.com/alexrodriguez',
 			linkedIn: 'https://linkedin.com/in/alexrodriguez'
+		},
+		{
+			name: 'Sarah Chen',
+			title: 'Lead UX Designer',
+			image: '/img/test2.png',
+			bio: 'Passionate about creating intuitive user experiences that delight and engage users.',
+			skills: ['UI/UX Design', 'Figma', 'User Research', 'Prototyping', 'Design Systems'],
+			linkedIn: 'https://linkedin.com/in/sarahchen',
+			website: 'https://sarahchen.design'
+		},
+		{
+			name: 'Alex Rodriguez',
+			title: 'Full Stack Developer',
+			image: '/img/test3.png',
+			bio: 'Building scalable web applications with modern technologies and clean architecture.',
+			skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'AWS'],
+			github: 'https://github.com/alexrodriguez',
+			linkedIn: 'https://linkedin.com/in/alexrodriguez'
 		}
 	];
 
@@ -238,9 +256,13 @@
 	subtitle="Auto Commerce Platform"
 	description="An AI-curated marketplace revolutionizing auto part discovery and conversations with precision matching."
 	images={{
-		macbook: '/img/particledrive/desktop.png',
-		ipad: '/img/particledrive/ipad.png',
-		iphone: '/img/particledrive/iphone.png'
+		macbook: '/img/surplusbite/desktop.png',
+		ipad: '/img/surplusbite/desktop.png',
+		iphone: '/img/surplusbite/desktop.png'
+	}}
+	orientation={{
+		ipad: 'portrait',
+		iphone: 'landscape'
 	}}
 />
 
@@ -258,9 +280,6 @@
 		'Scalable Display Control – Unlimited screens with adaptive layouts for any venue or campaign'
 	]}
 	reverse={false}
-	badgeText="🎯 Event Technology"
-	primaryButtonText="See Demo"
-	secondaryButtonText="Learn More"
 />
 
 <!-- 10. QUOTATIONGATE - Multi-Device B2B (3 images) -->

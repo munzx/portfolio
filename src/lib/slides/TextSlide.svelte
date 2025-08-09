@@ -5,7 +5,7 @@
 	export let subText: string = 'This is a text slide. You can add any content here.';
 </script>
 
-<BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
+<BaseSlide className=" text-[#f5f5f7]">
 	<div class=" w-full text-center lg:max-w-1/2">
 		<h2
 			class="mb-8 text-[clamp(3rem,7vw,4.5rem)] leading-tight font-semibold tracking-tight text-white"

@@ -8,18 +8,17 @@
 	onMount(() => {
 		if (window) {
 			let screenHeight: number = window?.screen?.height;
-			minHeight = screenHeight > 800 ? screenHeight : 800;
+			minHeight = Math.max(minHeight, screenHeight);
 		}
 	});
 </script>
 
 <section
-	class="reveal relative flex h-full min-h-screen w-screen snap-start flex-col items-center justify-center
+	class="reveal relative flex h-full w-screen snap-start flex-col items-center justify-center overflow-x-clip
 		   px-3 py-4
 		   sm:px-6 sm:py-6
 		   md:px-8 md:py-8
 		   lg:p-0 {className}"
-	style="background-color: {backgroundColor}; min-height: {1000}px;"
 >
 	<slot />
 </section>
