@@ -41,7 +41,7 @@
 			></div>
 		</div>
 
-		<div class="mb-2 text-center">
+		<div class="mb-4 text-center">
 			<h2 class="mb-4 text-6xl leading-tight font-semibold tracking-tight text-white">
 				{title}
 			</h2>
@@ -54,7 +54,7 @@
 		</div>
 
 		<!-- Multi-Device Row with Responsive Sizing -->
-		<div class="flex items-center justify-center gap-4 px-4">
+		<div class="mt-12 flex items-center justify-center gap-4 px-4">
 			{#if showDevices.macbook}
 				<!-- MacBook Pro - Largest (takes most space) -->
 				<div class="w-4/5 transform transition-all duration-700">
