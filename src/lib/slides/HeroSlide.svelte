@@ -2,20 +2,18 @@
 	import BaseSlide from './BaseSlide.svelte';
 	import MacBookProMockup from '$lib/MacBookProMockup.svelte';
 
-	export let galleryImages: string[];
-	export let accentColor: string = '#ffffff'; // Apple blue as default
+	export let imageUrl: string;
+	export let accentColor: string = '#fffffff'; // Apple blue as default
 </script>
 
-<BaseSlide
-	className="flex h-full min-h-screen justify-center items-center overflow-hidden text-[#f5f5f7]"
->
+<BaseSlide className=" text-[#f5f5f7]">
 	<!-- Dynamic gradient background based on accent color -->
-	<div class="absolute inset-0 opacity-5">
+	<!-- <div class="absolute inset-0 opacity-5">
 		<div
 			class="h-full w-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]"
 			style="background: radial-gradient(circle at center, {accentColor}15 0%, transparent 70%)"
 		></div>
-	</div>
+	</div> -->
 
 	<!-- Floating geometric shapes -->
 	<div class="pointer-events-none absolute inset-0 overflow-hidden">
@@ -50,10 +48,7 @@
 		<!-- Right Visual -->
 		<div class="flex flex-1 items-center justify-center">
 			<div class="w-full max-w-2xl scale-90 transform">
-				<MacBookProMockup
-					imageUrl={galleryImages[1]}
-					altText="AuraFlow creative collaboration platform"
-				/>
+				<MacBookProMockup {imageUrl} altText="AuraFlow creative collaboration platform" />
 			</div>
 		</div>
 	</div>

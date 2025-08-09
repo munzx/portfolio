@@ -32,18 +32,21 @@
 	<!-- Floating geometric shapes for visual interest -->
 	<div class="pointer-events-none absolute inset-0 top-0 overflow-hidden">
 		<div
-			class="animate-pulse-slow absolute top-1/4 left-1/4 h-32 w-32 rounded-full opacity-10 blur-xl"
+			class="animate-pulse-slow absolute top-1/4 left-1/4 h-16 w-16 rounded-full opacity-10 blur-xl sm:h-24 sm:w-24 lg:h-32 lg:w-32"
 			style="background-color: {accentColor}"
 		></div>
 		<div
-			class="animate-pulse-slow absolute right-1/4 bottom-1/3 h-24 w-24 rounded-full opacity-5 blur-lg"
+			class="animate-pulse-slow absolute right-1/4 bottom-1/3 h-12 w-12 rounded-full opacity-5 blur-lg sm:h-18 sm:w-18 lg:h-24 lg:w-24"
 			style="background-color: {accentColor}; animation-delay: 2s;"
 		></div>
 	</div>
 
-	<div class="flex w-full flex-col px-8 lg:flex-row">
+	<div class="flex w-full flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:gap-12 lg:px-40">
 		<!-- Content Section -->
-		<div class="flex w-full flex-col justify-center space-y-6 lg:w-1/2" class:lg:order-2={reverse}>
+		<div
+			class="flex w-full flex-col justify-center space-y-4 sm:space-y-6 lg:w-1/2"
+			class:lg:order-2={reverse}
+		>
 			<!-- Badge/Label (optional) -->
 			{#if badgeText}
 				<div class="inline-flex w-fit items-center">
@@ -57,17 +60,17 @@
 			{/if}
 
 			<!-- Main Heading -->
-			<h2 class="text-[clamp(3rem,6vw,5rem)] leading-tight font-semibold tracking-tight text-white">
+			<h2 class="text-[clamp(2rem,8vw,5rem)] leading-tight font-semibold tracking-tight text-white">
 				{title}
 			</h2>
 
 			<!-- Subtitle -->
-			<p class="text-[clamp(1.5rem,3vw,2rem)] font-medium text-[#f5f5f7] opacity-90">
+			<p class="text-[clamp(1.25rem,4vw,2rem)] font-medium text-[#f5f5f7] opacity-90">
 				{subtitle}
 			</p>
 
 			<!-- Description -->
-			<p class="max-w-xl text-lg leading-relaxed text-[#a1a1a6]">
+			<p class="max-w-xl text-base leading-relaxed text-[#a1a1a6] sm:text-lg">
 				{description}
 			</p>
 
@@ -96,10 +99,12 @@
 
 			<!-- Call to action (optional) -->
 			{#if primaryButtonText || secondaryButtonText}
-				<div class="flex items-center space-x-4 pt-6">
+				<div
+					class="flex flex-col items-start gap-3 pt-4 sm:flex-row sm:items-center sm:gap-4 sm:pt-6"
+				>
 					{#if primaryButtonText}
 						<button
-							class="rounded-xl px-8 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+							class="w-full rounded-xl px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg sm:w-auto sm:px-8"
 							style="background: linear-gradient(135deg, {accentColor} 0%, {accentColor}cc 100%); box-shadow: 0 4px 20px {accentColor}40;"
 						>
 							{primaryButtonText}
@@ -107,7 +112,7 @@
 					{/if}
 					{#if secondaryButtonText}
 						<button
-							class="rounded-xl border border-white/20 px-8 py-3 font-medium text-[#f5f5f7] transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+							class="w-full rounded-xl border border-white/20 px-6 py-3 font-medium text-[#f5f5f7] transition-all duration-300 hover:border-white/40 hover:bg-white/5 sm:w-auto sm:px-8"
 						>
 							{secondaryButtonText}
 						</button>
@@ -117,8 +122,11 @@
 		</div>
 
 		<!-- Visual Showcase -->
-		<div class="flex w-full flex-col lg:w-1/2 lg:flex-row" class:lg:order-1={reverse}>
-			<div class="relative">
+		<div
+			class="flex w-full flex-col items-center justify-center lg:mt-0 lg:w-1/2 lg:flex-row"
+			class:lg:order-1={reverse}
+		>
+			<div class="relative flex w-full max-w-lg items-center justify-center lg:max-w-none">
 				<!-- Glow effect behind the mockup -->
 				<div
 					class="absolute inset-0 scale-110 rounded-lg opacity-20 blur-3xl"
@@ -126,20 +134,18 @@
 				></div>
 
 				<!-- Main device mockup -->
-				<div
-					class="relative scale-90 transform transition-all duration-700 hover:scale-95 hover:rotate-1"
-				>
-					<MacBookProMockup {imageUrl} {altText} />
-				</div>
+				<MacBookProMockup {imageUrl} {altText} />
 
 				<!-- Floating UI elements for extra visual appeal -->
 				{#if showLiveIndicator}
-					<div class="absolute -top-8 -right-8 opacity-80">
+					<div
+						class="absolute -top-4 -right-4 opacity-80 sm:-top-6 sm:-right-6 lg:-top-8 lg:-right-8"
+					>
 						<div
-							class="rounded-lg p-3 backdrop-blur-sm"
+							class="rounded-lg p-2 backdrop-blur-sm sm:p-3"
 							style="background-color: {accentColor}20; border: 1px solid {accentColor}40;"
 						>
-							<div class="flex items-center space-x-2">
+							<div class="flex items-center space-x-1 sm:space-x-2">
 								<div class="h-2 w-2 rounded-full bg-green-400"></div>
 								<span class="text-xs font-medium text-white">Live</span>
 							</div>
@@ -148,21 +154,23 @@
 				{/if}
 
 				{#if collaboratorCount > 0}
-					<div class="absolute -bottom-6 -left-6 opacity-80">
+					<div
+						class="absolute -bottom-3 -left-3 opacity-80 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6"
+					>
 						<div
-							class="rounded-lg p-4 backdrop-blur-sm"
+							class="rounded-lg p-2 backdrop-blur-sm sm:p-3 lg:p-4"
 							style="background-color: {accentColor}15; border: 1px solid {accentColor}30;"
 						>
-							<div class="flex items-center space-x-3">
+							<div class="flex items-center space-x-2 sm:space-x-3">
 								<div class="flex -space-x-1">
 									<div
-										class="h-6 w-6 rounded-full border-2 border-white bg-gradient-to-br from-purple-400 to-pink-400"
+										class="h-4 w-4 rounded-full border-2 border-white bg-gradient-to-br from-purple-400 to-pink-400 sm:h-5 sm:w-5 lg:h-6 lg:w-6"
 									></div>
 									<div
-										class="h-6 w-6 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-cyan-400"
+										class="h-4 w-4 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-cyan-400 sm:h-5 sm:w-5 lg:h-6 lg:w-6"
 									></div>
 									<div
-										class="h-6 w-6 rounded-full border-2 border-white bg-gradient-to-br from-green-400 to-emerald-400"
+										class="h-4 w-4 rounded-full border-2 border-white bg-gradient-to-br from-green-400 to-emerald-400 sm:h-5 sm:w-5 lg:h-6 lg:w-6"
 									></div>
 								</div>
 								<span class="text-xs font-medium text-white"

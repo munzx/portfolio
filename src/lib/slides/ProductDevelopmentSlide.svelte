@@ -196,7 +196,7 @@
 						stroke-linecap="round"
 					/>
 					<path
-						d="M50 20 L40 10 M50 20 L60 10"
+						d="M50 20 L30 10 M50 20 L40 35"
 						stroke="currentColor"
 						stroke-width="3"
 						fill="none"
@@ -225,7 +225,7 @@
 							stroke-linecap="round"
 						/>
 						<path
-							d="M25 20 L15 30 M25 20 L35 30"
+							d="M25 20 L15 10 M25 20 L35 10"
 							stroke="currentColor"
 							stroke-width="3"
 							fill="none"

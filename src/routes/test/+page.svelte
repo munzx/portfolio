@@ -282,6 +282,80 @@
 	reverse={false}
 />
 
+<FeaturesSlideIPad
+	featureItems={[
+		{
+			title: 'Real-time Engagement',
+			description: 'Capture live social media interactions and display them instantly.',
+			image: '/img/socialwall/ipad.png',
+			active: true
+		},
+		{
+			title: 'Customizable Layouts',
+			description: 'Tailor the display to match your event’s theme and branding.',
+			image: '/img/socialwall/ipad.png',
+			active: false
+		},
+		{
+			title: 'Analytics Dashboard',
+			description: 'Gain insights into audience engagement and content performance.',
+			image: '/img/socialwall/ipad.png',
+			active: false
+		}
+	]}
+	currentFeature={{
+		title: 'Real-time Engagement',
+		description: 'Capture live social media interactions and display them instantly.',
+		image: '/img/socialwall/ipad.png',
+		active: true
+	}}
+	onFeatureHover={(index) => {
+		return 0; // Placeholder for hover functionality
+	}}
+	reverse={false}
+	title="SocialWall Features"
+	description="Transforming social media buzz into real-time visual experiences"
+	accentColor="#7c3aed"
+/>
+
+<FeaturesSlideIPhone
+	featureItems={[
+		{
+			title: 'Real-time Engagement',
+			description: 'Capture live social media interactions and display them instantly.',
+			image: '/img/socialwall/ipad.png',
+			active: true
+		},
+		{
+			title: 'Customizable Layouts',
+			description: "Tailor the display to match your event's theme and branding.",
+			image: '/img/socialwall/ipad.png',
+			active: false
+		},
+		{
+			title: 'Analytics Dashboard',
+			description: 'Gain insights into audience engagement and content performance.',
+			image: '/img/socialwall/ipad.png',
+			active: false
+		}
+	]}
+	currentFeature={{
+		title: 'Real-time Engagement',
+		description: 'Capture live social media interactions and display them instantly.',
+		image: '/img/socialwall/ipad.png',
+		active: true
+	}}
+	onFeatureHover={(index) => {
+		return 0; // Placeholder for hover functionality
+	}}
+	reverse={false}
+	title="SocialWall Features"
+	description="Transforming social media buzz into real-time visual experiences"
+	accentColor="#7c3aed"
+/>
+
+<HeroSlide imageUrl="/img/surplusbite/desktop.png" accentColor="#10b981" />
+
 <!-- 10. QUOTATIONGATE - Multi-Device B2B (3 images) -->
 <MultiDeviceSlide
 	title="QuotationGate"
@@ -343,8 +417,8 @@
 		opacity: 1;
 		transform: translateY(0);
 		transition:
-			opacity 0.8s ease-out,
-			transform 0.8s ease-out;
+			opacity 0.4s ease-out,
+			transform 0.4s ease-out;
 	}
 
 	/* Custom accent colors for each app section */

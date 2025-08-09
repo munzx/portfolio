@@ -23,10 +23,24 @@
 		ipad: true,
 		macbook: true
 	};
+
+	export let accentColor: string = '#0071e3'; // Default Apple blue
 </script>
 
-<BaseSlide className=" text-[#f5f5f7]">
+<BaseSlide className="bg-black text-[#f5f5f7]">
 	<div class="container mx-auto flex h-full max-w-7xl flex-col justify-center px-8">
+		<!-- Floating geometric shapes -->
+		<div class="pointer-events-none absolute inset-0 overflow-hidden">
+			<div
+				class="animate-pulse-slow absolute top-1/4 left-1/4 h-32 w-32 rounded-full opacity-50 blur-xl"
+				style="background-color: {accentColor}"
+			></div>
+			<div
+				class="animate-pulse-slow absolute right-1/4 bottom-1/3 h-24 w-24 rounded-full opacity-50 blur-lg"
+				style="background-color: {accentColor}; animation-delay: 2s;"
+			></div>
+		</div>
+
 		<div class="mb-2 text-center">
 			<h2 class="mb-4 text-6xl leading-tight font-semibold tracking-tight text-white">
 				{title}

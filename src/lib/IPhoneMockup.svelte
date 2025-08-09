@@ -269,9 +269,9 @@
 			<image
 				href={imageUrl}
 				x="13"
-				y={13 + statusBarHeight + 5}
+				y={10 + statusBarHeight + 5}
 				width={dimensions.device.width - 26}
-				height={dimensions.device.height - 26 - statusBarHeight - 5}
+				height={dimensions.device.height - 23 - statusBarHeight - 5}
 				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
 				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
 			/>
