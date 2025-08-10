@@ -19,7 +19,7 @@
 				if (!isHovered) {
 					currentIndex = (currentIndex + 1) % images.length;
 				}
-			}, 4000); // Slower rotation for better UX
+			}, 2000); // Slower rotation for better UX
 		}
 	});
 

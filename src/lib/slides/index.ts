@@ -11,4 +11,5 @@ export { default as MultiDeviceSlide } from './MultiDeviceSlide.svelte';
 export { default as TextSlide } from './TextSlide.svelte';
 export { default as ProductDevelopmentSlide } from './ProductDevelopmentSlide.svelte';
 export { default as MasonrySlide } from './MasonrySlide.svelte';
+export { default as TailwindMasonrySlide } from './TailwindMasonrySlide.svelte';
 export { default as BaseSlide } from './BaseSlide.svelte';

@@ -101,63 +101,71 @@
 									loading="lazy"
 								/>
 
-								<!-- Gradient overlay for text readability -->
+								<!-- Enhanced gradient overlay for better text readability -->
 								<div
-									class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+									class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"
 								></div>
+
+								<!-- Additional dark overlay on bottom for mobile readability -->
+								<div class="absolute right-0 bottom-0 left-0 h-24 bg-black/60 md:h-20"></div>
 							</div>
 
 							<!-- Website Info Overlay -->
-							<div class="absolute right-0 bottom-0 left-0 p-6">
+							<div class="absolute right-0 bottom-0 left-0 p-4 md:p-6">
+								<!-- Dark background container for text -->
 								<div
-									class="translate-y-2 transform transition-transform duration-300 group-hover:translate-y-0"
+									class="rounded-lg bg-black/50 p-3 backdrop-blur-sm transition-all duration-300 group-hover:bg-black/40 md:bg-transparent md:p-0 md:backdrop-blur-none"
 								>
-									{#if website.category}
-										<span
-											class="mb-2 inline-block rounded-full px-3 py-1 text-xs font-medium text-white"
-											style="background-color: {accentColor}40; border: 1px solid {accentColor}60;"
-										>
-											{website.category}
-										</span>
-									{/if}
-
-									<h3 class="group-hover:text-shadow mb-2 text-xl font-bold text-white">
-										{website.title}
-									</h3>
-
-									{#if website.description}
-										<p
-											class="text-sm text-[#a1a1a6] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-										>
-											{website.description}
-										</p>
-									{/if}
-
-									{#if website.url}
-										<div
-											class="mt-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-										>
+									<div
+										class="translate-y-2 transform transition-transform duration-300 group-hover:translate-y-0"
+									>
+										{#if website.category}
 											<span
-												class="inline-flex items-center text-xs font-medium"
-												style="color: {accentColor};"
+												class="mb-2 inline-block rounded-full px-3 py-1 text-xs font-medium text-white shadow-sm"
+												style="background-color: {accentColor}40; border: 1px solid {accentColor}60;"
 											>
-												Visit Site
-												<svg
-													class="ml-1 h-3 w-3"
-													fill="none"
-													stroke="currentColor"
-													viewBox="0 0 24 24"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														stroke-width="2"
-														d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-													></path>
-												</svg>
+												{website.category}
 											</span>
-										</div>
-									{/if}
+										{/if}
+
+										<h3 class="mb-2 text-lg font-bold text-white drop-shadow-lg md:text-xl">
+											{website.title}
+										</h3>
+
+										{#if website.description}
+											<p
+												class="text-sm text-gray-200 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100"
+											>
+												{website.description}
+											</p>
+										{/if}
+
+										{#if website.url}
+											<div
+												class="mt-3 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100"
+											>
+												<span
+													class="inline-flex items-center text-xs font-medium drop-shadow-sm"
+													style="color: {accentColor};"
+												>
+													Visit Site
+													<svg
+														class="ml-1 h-3 w-3"
+														fill="none"
+														stroke="currentColor"
+														viewBox="0 0 24 24"
+													>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															stroke-width="2"
+															d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+														></path>
+													</svg>
+												</span>
+											</div>
+										{/if}
+									</div>
 								</div>
 							</div>
 						</div>

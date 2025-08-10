@@ -13,60 +13,102 @@
 		FeaturesSlideMacBook,
 		FeatureSlideWeb,
 		ProductDevelopmentSlide,
-		MasonrySlide
+		MasonrySlide,
+		TailwindMasonrySlide
 	} from '$lib/slides';
 
 	// Company information for Moheera
 	const moheeraCompany = {
 		name: 'Moheera',
-		tagline: 'Empowering digital transformation through innovation',
+		tagline: 'From Creative Vision to Digital Reality',
 		description:
-			'Moheera is a cutting-edge technology company specializing in digital solutions that drive business growth and enhance user experiences. We combine strategic thinking with technical excellence to deliver impactful results.',
+			'Moheera is a founder-led technology consultancy in Dubai, specializing in transforming passionate ideas into market-ready digital products. We provide end-to-end guidance from initial concept validation to technical execution, serving entrepreneurs and companies across the MENA region and beyond.',
 		logo: '/img/screenshot.png',
-		values: ['Innovation', 'Excellence', 'Collaboration', 'Impact', 'Growth'],
-		achievements: [],
+		values: [
+			'Founder-Led Excellence',
+			'Creative Partnership',
+			'Technical Mastery',
+			'Regional Expertise',
+			'Trusted Execution'
+		],
+		achievements: [
+			'50+ Projects Delivered',
+			'12+ Years Experience',
+			'Cross-Industry Expertise',
+			'Dubai-Based, Globally Connected'
+		],
 		website: 'https://moheera.com'
 	};
 
-	const moheeraStats: any = [];
+	const moheeraStats: any = [
+		{
+			number: '50+',
+			label: 'Projects Delivered',
+			description: 'From MVP to full-scale platforms'
+		},
+		{
+			number: '12+',
+			label: 'Years Experience',
+			description: 'Deep technical & creative expertise'
+		},
+		{
+			number: '70%',
+			label: 'Confidential Projects',
+			description: 'Trusted by stealth startups & enterprises'
+		},
+		{
+			number: '48hr',
+			label: 'Response Time',
+			description: 'Direct access to decision-maker'
+		}
+	];
 
-	// Team members
+	// Team members and trusted network
 	const teamMembers = [
 		{
-			name: 'Sarah Chen',
-			title: 'Lead UX Designer',
+			name: 'Munzir Suliman',
+			title: 'Founder & Lead Developer',
+			image: '/img/me.jpg',
+			bio: 'Full-stack developer and creative strategist with 12+ years turning ambitious ideas into successful digital products.',
+			skills: [
+				'Technical Leadership',
+				'Product Strategy',
+				'Full-Stack Development',
+				'UX/UI Design',
+				'Project Management'
+			],
+			linkedIn: 'https://linkedin.com/in/munzirsuliman',
+			github: 'https://github.com/munzirsuliman'
+		},
+		{
+			name: 'Creative Network',
+			title: 'Specialized Design Partners',
 			image: '/img/test2.png',
-			bio: 'Passionate about creating intuitive user experiences that delight and engage users.',
-			skills: ['UI/UX Design', 'Figma', 'User Research', 'Prototyping', 'Design Systems'],
-			linkedIn: 'https://linkedin.com/in/sarahchen',
-			website: 'https://sarahchen.design'
+			bio: 'Curated network of UI/UX designers, brand specialists, and creative professionals for complex design challenges.',
+			skills: [
+				'UI/UX Design',
+				'Brand Identity',
+				'Motion Graphics',
+				'User Research',
+				'Creative Direction'
+			],
+			linkedIn: '#',
+			website: '#'
 		},
 		{
-			name: 'Alex Rodriguez',
-			title: 'Full Stack Developer',
+			name: 'Technical Collective',
+			title: 'Development Specialists',
 			image: '/img/test3.png',
-			bio: 'Building scalable web applications with modern technologies and clean architecture.',
-			skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'AWS'],
-			github: 'https://github.com/alexrodriguez',
-			linkedIn: 'https://linkedin.com/in/alexrodriguez'
-		},
-		{
-			name: 'Sarah Chen',
-			title: 'Lead UX Designer',
-			image: '/img/test2.png',
-			bio: 'Passionate about creating intuitive user experiences that delight and engage users.',
-			skills: ['UI/UX Design', 'Figma', 'User Research', 'Prototyping', 'Design Systems'],
-			linkedIn: 'https://linkedin.com/in/sarahchen',
-			website: 'https://sarahchen.design'
-		},
-		{
-			name: 'Alex Rodriguez',
-			title: 'Full Stack Developer',
-			image: '/img/test3.png',
-			bio: 'Building scalable web applications with modern technologies and clean architecture.',
-			skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'AWS'],
-			github: 'https://github.com/alexrodriguez',
-			linkedIn: 'https://linkedin.com/in/alexrodriguez'
+			bio: 'Trusted development partners for large-scale projects requiring specialized expertise or accelerated timelines.',
+			skills: [
+				'Mobile Development',
+				'DevOps',
+				'AI/ML Integration',
+				'Blockchain',
+				'Enterprise Solutions'
+			],
+			github: '#',
+			linkedIn: '#'
 		}
 	];
 
@@ -121,10 +163,10 @@
 </script>
 
 <svelte:head>
-	<title>Moheera Portfolio | Digital Solutions That Transform</title>
+	<title>Moheera | Dubai-Based Digital Product Development</title>
 	<meta
 		name="description"
-		content="Discover our portfolio of innovative digital solutions that solve real-world problems and create lasting impact."
+		content="Turn your creative idea into reality. Dubai-based founder-led consultancy specializing in full-stack development, product strategy, and digital transformation for passionate entrepreneurs."
 	/>
 </svelte:head>
 
@@ -139,25 +181,25 @@
 
 <!-- 2. VISION STATEMENT -->
 <TextSlide
-	text="Transforming Ideas Into Digital Solutions That Matter"
-	subText="We build applications that solve real-world problems and create lasting impact across industries"
+	text="Have a Great Idea? Let's Build It Together"
+	subText="We partner with passionate entrepreneurs and companies in Dubai and beyond to transform creative concepts into market-ready digital products"
 />
 
 <!-- 3. ABOUT LEADERSHIP -->
 <AboutMeSlide
 	name="Munzir Suliman"
-	title="Software Engineer & Creative Developer"
-	description="Passionate about creating beautiful, functional digital experiences that make a difference. I specialize in full-stack development, UX/UI design, and bringing innovative ideas to life through code."
+	title="Founder & Creative Technologist"
+	description="I help passionate entrepreneurs turn their best ideas into reality. Based in Dubai with 12+ years of experience, I provide hands-on technical leadership and creative guidance from concept to launch. When you work with Moheera, you're working directly with me - no layers, no miscommunication, just focused execution."
 	portfolioImage="/img/me.jpg"
 	skills={[
-		'TypeScript',
-		'Svelte/SvelteKit',
-		'React/Next.js',
-		'Node.js',
-		'Python',
+		'Product Strategy & Validation',
+		'Full-Stack Development',
 		'UI/UX Design',
-		'Product Strategy',
-		'System Architecture'
+		'TypeScript/JavaScript',
+		'React/Svelte/Node.js',
+		'Team Leadership',
+		'Technical Consultation',
+		'Project Management'
 	]}
 	contactEmail="munzir.suliman@outlook.com"
 	contactLinkedIn="https://linkedin.com/in/munzirsuliman"
@@ -169,13 +211,25 @@
 
 <!-- 4. TEAM SHOWCASE -->
 <TeamSlide
-	title="Meet the Team"
-	subtitle="The creative minds who bring ideas to life"
+	title="The Moheera Advantage"
+	subtitle="Founder-led expertise with specialized creative network"
 	{teamMembers}
 	accentColor="#6366f1"
 />
 
-<!-- 5. PARTICLEDRIVE - Multi-Device Commerce (3 images) -->
+<!-- 5. PROJECT TYPES & APPROACH -->
+<TextSlide
+	text="We Partner With Visionaries Across Industries"
+	subText="From fintech startups seeking regulatory-compliant solutions, to restaurants needing custom ordering systems, to healthcare innovators building patient engagement platforms. Whether you're a Dubai-based entrepreneur with a regional expansion plan, an international company entering the MENA market, or a creative professional with a breakthrough concept - we provide the technical expertise and strategic guidance to make it happen."
+/>
+
+<!-- 6. PORTFOLIO INTRODUCTION -->
+<TextSlide
+	text="Here's How We Turn Ideas Into Impact"
+	subText="Each project starts with a passionate entrepreneur and a compelling vision. Here are some of the digital products we've brought to life - from concept to launch."
+/>
+
+<!-- 7. PARTICLEDRIVE - Multi-Device Commerce (3 images) -->
 <MultiDeviceSlide
 	title="ParticleDrive"
 	subtitle="Auto Commerce Platform"
@@ -191,7 +245,7 @@
 	}}
 />
 
-<!-- 6. SURPLUSBITE - Multi-Device Showcase (3 images) -->
+<!-- 8. SURPLUSBITE - Multi-Device Showcase (3 images) -->
 <MultiDeviceSlide
 	title="SurplusBite"
 	subtitle="The Intelligent Surplus Management"
@@ -207,7 +261,7 @@
 	}}
 />
 
-<!-- 7. FITBITE - Multi-Device Platform (3 images) -->
+<!-- 9. FITBITE - Multi-Device Platform (3 images) -->
 <MultiDeviceSlide
 	title="FitBite"
 	subtitle="Precision Nutrition Platform"
@@ -228,7 +282,7 @@
 	}}
 />
 
-<!-- 8. ECHOIMPACT - Multi-Device Sustainability (3 images) -->
+<!-- 10. ECHOIMPACT - Multi-Device Sustainability (3 images) -->
 <FeaturesSlideIPhone
 	featureItems={[]}
 	currentFeature={{
@@ -248,7 +302,7 @@
 	orientation="portrait"
 />
 
-<!-- 9. SOCIALWALL - Single Image Web Showcase -->
+<!-- 11. SOCIALWALL - Single Image Web Showcase -->
 <FeatureSlideWeb
 	title="SocialWall"
 	subtitle="Where Engagement Becomes Experience"
@@ -264,7 +318,7 @@
 	reverse={false}
 />
 
-<!-- 10. QUOTATIONGATE - Multi-Device B2B  -->
+<!-- 12. QUOTATIONGATE - Multi-Device B2B  -->
 <HeroSlide
 	title="QuotationGate"
 	subtitle="Digital Construction Procurement"
@@ -273,28 +327,34 @@
 	accentColor="#10b981"
 />
 
-<!-- 11. DEVELOPMENT PROCESS -->
+<!-- 13. PROCESS INTRODUCTION -->
+<TextSlide
+	text="Behind Every Great Product Is a Proven Process"
+	subText="Each project follows our battle-tested methodology that turns ideas into successful launches"
+/>
+
+<!-- 14. DEVELOPMENT PROCESS -->
 <ProductDevelopmentSlide />
 
-<!-- 12. PORTFOLIO GALLERY -->
+<!-- 15. PORTFOLIO GALLERY -->
 <GallerySlide
 	title="Turn Your Idea Into Reality"
 	description="Develop your idea into a product and iterate rapidly to validate it"
 	galleryImages={portfolioGallery}
 />
 
-<!-- 13. WEBSITE SHOWCASE - MASONRY -->
-<MasonrySlide
+<!-- 16. WEBSITE SHOWCASE - TAILWIND MASONRY -->
+<TailwindMasonrySlide
 	title="Website Development Showcase"
 	subtitle="Discover our diverse portfolio of custom websites across various industries, each designed with unique requirements and user experiences in mind"
 	websites={websiteShowcase}
 	accentColor="#8b5cf6"
 />
 
-<!-- 14. CLOSING CALL-TO-ACTION -->
+<!-- 17. CLOSING CALL-TO-ACTION -->
 <TextSlide
-	text="Ready to Transform Your Ideas?"
-	subText="Let's build something amazing together. Get in touch to discuss your next project and see how we can bring your vision to life."
+	text="Ready to Turn Your Idea Into Reality?"
+	subText="Based in Dubai, serving ambitious entrepreneurs globally. Let's discuss your vision and create a roadmap to bring it to life."
 />
 
 <style>
