@@ -7,7 +7,7 @@
 	export const altText: string = 'MacBook Pro Display Content';
 	export let batteryLevel: number = 85; // Battery percentage
 	export let isDarkMode: boolean = false; // Dark/Light menu bar mode
-	export let deviceColor: 'silver' | 'space-gray' = 'silver'; // Device color variant
+	export let deviceColor: 'silver' | 'space-gray' = 'space-gray'; // Device color variant
 	export let shadow: string = '#ffffff'; // Shadow color
 
 	// Types

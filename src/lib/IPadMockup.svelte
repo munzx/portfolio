@@ -9,7 +9,7 @@
 	export let orientation: 'portrait' | 'landscape' = 'landscape';
 	export let batteryLevel: number = 85; // Battery percentage
 	export let isDarkMode: boolean = false; // Dark/Light status bar mode
-	export let deviceColor: 'silver' | 'space-gray' | 'gold' | 'rose-gold' = 'silver'; // Device color variant
+	export let deviceColor: 'silver' | 'space-gray' | 'gold' | 'rose-gold' = 'space-gray'; // Device color variant
 	export let shadow: string = '#ffffff'; // Shadow color
 
 	// Types

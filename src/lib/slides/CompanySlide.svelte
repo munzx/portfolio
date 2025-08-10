@@ -190,7 +190,7 @@
 
 				<!-- Mockup Container - Takes half screen width on desktop -->
 				<div class="relative w-full">
-					<MacBookProMockup imageUrl={company.logo} />
+					<MacBookProMockup deviceColor={'silver'} imageUrl={company.logo} />
 
 					<!-- Floating badge - Top right of mockup -->
 					<!-- <div class="absolute -top-3 -right-3 z-50 opacity-30">

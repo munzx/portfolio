@@ -9,7 +9,7 @@
 	export let orientation: 'portrait' | 'landscape' = 'portrait';
 	export let batteryLevel: number = 85; // Battery percentage
 	export let isDarkMode: boolean = false; // Dark/Light status bar mode
-	export let deviceColor: 'silver' | 'space-gray' | 'gold' | 'deep-purple' = 'silver'; // Device color variant
+	export let deviceColor: 'silver' | 'space-gray' | 'gold' | 'deep-purple' = 'space-gray'; // Device color variant
 	export let shadow: string = '#ffffff'; // Shadow color
 
 	// Types
@@ -33,8 +33,8 @@
 
 	// Constants for device dimensions - reduced for better fit
 	const DEVICE_DIMENSIONS: Record<'portrait' | 'landscape', DeviceDimensions> = {
-		portrait: { svg: { width: 200, height: 420 }, device: { width: 180, height: 400 } },
-		landscape: { svg: { width: 420, height: 200 }, device: { width: 400, height: 180 } }
+		portrait: { svg: { width: 200, height: 420 }, device: { width: 200, height: 400 } },
+		landscape: { svg: { width: 420, height: 200 }, device: { width: 400, height: 200 } }
 	} as const;
 
 	const BORDER_RADIUS: Record<'portrait' | 'landscape', BorderRadius> = {
