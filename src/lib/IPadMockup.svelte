@@ -24,10 +24,10 @@
 		statusBar: number;
 	};
 
-	// Constants for device dimensions (iPad specific)
+	// Constants for device dimensions (iPad specific) - reduced for better fit
 	const DEVICE_DIMENSIONS: Record<'portrait' | 'landscape', DeviceDimensions> = {
-		portrait: { svg: { width: 400, height: 550 }, device: { width: 380, height: 530 } },
-		landscape: { svg: { width: 550, height: 400 }, device: { width: 530, height: 380 } }
+		portrait: { svg: { width: 300, height: 400 }, device: { width: 280, height: 380 } },
+		landscape: { svg: { width: 400, height: 300 }, device: { width: 380, height: 280 } }
 	} as const;
 
 	const BORDER_RADIUS: Record<'portrait' | 'landscape', BorderRadius> = {
@@ -101,10 +101,11 @@
 
 <div class="relative z-50 flex w-full justify-center">
 	<svg
-		width={dimensions.svg.width}
-		height={dimensions.svg.height}
+		width="100%"
+		height="100%"
 		viewBox="0 0 {dimensions.svg.width} {dimensions.svg.height}"
-		class="relative z-10"
+		class="relative z-10 max-h-[250px] w-full"
+		preserveAspectRatio="xMidYMid meet"
 	>
 		<defs>
 			<!-- Screen cutout mask for bezel -->

@@ -2,13 +2,14 @@
 	import { onMount } from 'svelte';
 
 	export let backgroundColor = '';
-	export let minHeight: number = 800; // A4 landscape minimum
+	export let minHeight: number = 800; // Reduced from 800px for better fit
 	export let className = '';
 
 	onMount(() => {
-		if (window) {
-			let screenHeight: number = window?.screen?.height;
-			minHeight = Math.max(minHeight, screenHeight);
+		if (typeof window !== 'undefined') {
+			// Use viewport height instead of screen height for better sizing
+			const viewportHeight = window.innerHeight;
+			minHeight = Math.max(minHeight, viewportHeight * 0.9); // Use 90% of viewport
 		}
 	});
 </script>
@@ -18,7 +19,7 @@
 		   px-3 py-4
 		   sm:px-6 sm:py-6
 		   md:px-8 md:py-8
-		   lg:p-0 {className}"
+		   lg:m-0 lg:p-0 {className}"
 >
 	<slot />
 </section>

@@ -22,11 +22,11 @@
 		screen: number;
 	};
 
-	// Constants for MacBook dimensions
+	// Constants for MacBook dimensions - reduced for better fit
 	const DEVICE_DIMENSIONS: DeviceDimensions = {
-		svg: { width: 800, height: 520 },
-		device: { width: 780, height: 500 },
-		screen: { width: 760, height: 475 }
+		svg: { width: 600, height: 380 },
+		device: { width: 580, height: 360 },
+		screen: { width: 560, height: 340 }
 	} as const;
 
 	const BORDER_RADIUS: BorderRadius = {
@@ -87,10 +87,11 @@
 
 <div class="relative z-50 flex w-full justify-center">
 	<svg
-		width={dimensions.svg.width}
-		height={dimensions.svg.height}
+		width="100%"
+		height="100%"
 		viewBox="0 0 {dimensions.svg.width} {dimensions.svg.height}"
-		class="relative z-10"
+		class="relative z-10 max-h-[300px] w-full"
+		preserveAspectRatio="xMidYMid meet"
 	>
 		<defs>
 			<!-- Screen mask for bezel -->

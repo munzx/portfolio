@@ -31,10 +31,10 @@
 		height: number;
 	};
 
-	// Constants for device dimensions
+	// Constants for device dimensions - reduced for better fit
 	const DEVICE_DIMENSIONS: Record<'portrait' | 'landscape', DeviceDimensions> = {
-		portrait: { svg: { width: 300, height: 650 }, device: { width: 280, height: 610 } },
-		landscape: { svg: { width: 650, height: 300 }, device: { width: 630, height: 280 } }
+		portrait: { svg: { width: 200, height: 420 }, device: { width: 180, height: 400 } },
+		landscape: { svg: { width: 420, height: 200 }, device: { width: 400, height: 180 } }
 	} as const;
 
 	const BORDER_RADIUS: Record<'portrait' | 'landscape', BorderRadius> = {
@@ -51,7 +51,7 @@
 	$: radius = BORDER_RADIUS[orientation];
 	$: isPortrait = orientation === 'portrait';
 	$: statusBarHeight = isPortrait ? 50 : 38;
-	$: dynamicIslandSize = isPortrait ? { width: 74, height: 10 } : { width: 10, height: 74 };
+	$: dynamicIslandSize = isPortrait ? { width: 40, height: 10 } : { width: 10, height: 40 };
 
 	// Color schemes based on device color and mode
 	$: deviceColors = {
@@ -105,16 +105,16 @@
 	const getSideButtons = (): ButtonConfig[] => {
 		if (isPortrait) {
 			return [
-				{ x: -2, y: 110, width: 4, height: 30 }, // Volume up
-				{ x: -2, y: 145, width: 4, height: 30 }, // Volume down
-				{ x: -2, y: 185, width: 4, height: 20 }, // Action button
-				{ x: dimensions.device.width - 2, y: 130, width: 4, height: 50 } // Power button
+				{ x: -2, y: 70, width: 4, height: 20 }, // Volume up (adjusted for smaller size)
+				{ x: -2, y: 95, width: 4, height: 20 }, // Volume down (adjusted for smaller size)
+				{ x: -2, y: 120, width: 4, height: 15 }, // Action button (adjusted for smaller size)
+				{ x: dimensions.device.width - 2, y: 85, width: 4, height: 35 } // Power button (adjusted for smaller size)
 			];
 		} else {
 			return [
-				{ x: 110, y: -2, width: 30, height: 4 }, // Volume
-				{ x: 145, y: -2, width: 30, height: 4 }, // Volume
-				{ x: 185, y: -2, width: 20, height: 4 } // Action
+				{ x: 70, y: -2, width: 20, height: 4 }, // Volume (adjusted for smaller size)
+				{ x: 95, y: -2, width: 20, height: 4 }, // Volume (adjusted for smaller size)
+				{ x: 120, y: -2, width: 15, height: 4 } // Action (adjusted for smaller size)
 			];
 		}
 	};
@@ -130,10 +130,11 @@
 
 <div class="relative z-50 flex w-full justify-center">
 	<svg
-		width={dimensions.svg.width}
-		height={dimensions.svg.height}
+		width="100%"
+		height="100%"
 		viewBox="0 0 {dimensions.svg.width} {dimensions.svg.height}"
-		class="relative z-10"
+		class="relative z-10 max-h-[200px] w-full"
+		preserveAspectRatio="xMidYMid meet"
 	>
 		<defs>
 			<!-- Screen cutout mask for bezel -->
@@ -309,7 +310,7 @@
 			<!-- Dynamic Island -->
 			{#if isPortrait}
 				<rect
-					x={dimensions.device.width / 2 - 37}
+					x={dimensions.device.width / 2 - 20}
 					y="25"
 					width={dynamicIslandSize.width}
 					height={dynamicIslandSize.height}
@@ -319,7 +320,7 @@
 			{:else}
 				<rect
 					x="25"
-					y={dimensions.device.height / 2 - 37}
+					y={dimensions.device.height / 2 - 20}
 					width={dynamicIslandSize.width}
 					height={dynamicIslandSize.height}
 					rx="5"
@@ -372,10 +373,10 @@
 	{#if isPortrait}
 		<!-- Time -->
 		<text
-			x="23"
-			y="40"
+			x="25"
+			y="34"
 			font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
-			font-size="10"
+			font-size="6"
 			font-weight="600"
 			fill={statusBarColor.text}
 		>
@@ -383,9 +384,9 @@
 		</text>
 
 		<!-- Right status icons -->
-		<g transform="translate({dimensions.device.width - 80}, 30)">
+		<g transform="translate({dimensions.device.width - 80}, 28)">
 			<!-- Cellular -->
-			<g transform="translate(0, 2)">
+			<g transform="translate(26, 2) scale(0.6)">
 				<StatusBarIcons
 					type="cellular"
 					{isPortrait}
@@ -395,7 +396,7 @@
 			</g>
 
 			<!-- WiFi -->
-			<g transform="translate(17, 3)">
+			<g transform="translate(34, 3) scale(0.6)">
 				<StatusBarIcons
 					type="wifi"
 					{isPortrait}
@@ -405,7 +406,7 @@
 			</g>
 
 			<!-- Battery -->
-			<g transform="translate(38, 3)">
+			<g transform="translate(45, 3) scale(0.6)">
 				<StatusBarIcons
 					type="battery"
 					{isPortrait}
@@ -429,7 +430,7 @@
 		</text>
 
 		<g transform="translate({dimensions.device.width - 98}, 26)">
-			<g transform="translate(12, 3)">
+			<g transform="translate(12, 3) scale(0.8)">
 				<StatusBarIcons
 					type="cellular"
 					{isPortrait}
@@ -437,7 +438,7 @@
 					opacity={statusBarColor.iconOpacity}
 				/>
 			</g>
-			<g transform="translate(28, 3)">
+			<g transform="translate(28, 3) scale(0.8)">
 				<StatusBarIcons
 					type="wifi"
 					{isPortrait}
@@ -445,7 +446,7 @@
 					opacity={statusBarColor.iconOpacity}
 				/>
 			</g>
-			<g transform="translate(48, 3)">
+			<g transform="translate(48, 3) scale(0.8)">
 				<StatusBarIcons
 					type="battery"
 					{isPortrait}

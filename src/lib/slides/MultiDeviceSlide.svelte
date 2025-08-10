@@ -27,8 +27,8 @@
 	export let accentColor: string = '#0071e3'; // Default Apple blue
 </script>
 
-<BaseSlide className="bg-black text-[#f5f5f7]">
-	<div class="container mx-auto flex h-full max-w-7xl flex-col justify-center px-8">
+<BaseSlide className=" text-[#f5f5f7]">
+	<div class="container mx-auto flex max-w-5xl flex-col items-center justify-center px-6">
 		<!-- Floating geometric shapes -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
 			<div
@@ -41,29 +41,31 @@
 			></div>
 		</div>
 
-		<div class="mb-4 text-center">
-			<h2 class="mb-4 text-6xl leading-tight font-semibold tracking-tight text-white">
+		<div class="mb-4 text-center sm:mb-6 lg:mb-8">
+			<h2
+				class="mb-2 text-4xl leading-tight font-semibold tracking-tight text-white sm:mb-3 sm:text-5xl lg:mb-4"
+			>
 				{title}
 			</h2>
-			<p class="text-xl font-medium text-[#f5f5f7] opacity-90">
+			<p class="mb-2 text-lg font-medium text-[#f5f5f7] opacity-90 sm:mb-3 sm:text-xl">
 				{subtitle}
 			</p>
-			<p class="mx-auto max-w-2xl text-lg leading-relaxed text-[#a1a1a6]">
+			<p class="mx-auto max-w-2xl text-base leading-relaxed text-[#a1a1a6] sm:text-lg">
 				{description}
 			</p>
 		</div>
 
 		<!-- Multi-Device Row with Responsive Sizing -->
-		<div class="mt-12 flex items-center justify-center gap-4 px-4">
+		<div class="mx-auto flex h-fit w-full max-w-4xl items-center justify-center">
 			{#if showDevices.macbook}
 				<!-- MacBook Pro - Largest (takes most space) -->
-				<div class="w-4/5 transform transition-all duration-700">
+				<div class="w-1/2 transform transition-all duration-700">
 					<MacBookProMockup imageUrl={images.macbook} altText="AuraFlow desktop interface" />
 				</div>
 			{/if}
 			{#if showDevices.ipad}
 				<!-- iPad - Medium -->
-				<div class="w-3/5 transform transition-all duration-700">
+				<div class="w-1/3 transform transition-all duration-700">
 					<IPadMockup
 						orientation={orientation.ipad}
 						imageUrl={images.ipad}
@@ -73,7 +75,7 @@
 			{/if}
 			{#if showDevices.iphone}
 				<!-- iPhone - Smallest -->
-				<div class="w-2/5 transform transition-all duration-700">
+				<div class="w-1/5 transform transition-all duration-700">
 					<IPhoneMockup
 						orientation={orientation.iphone}
 						imageUrl={images.iphone}
