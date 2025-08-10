@@ -45,10 +45,11 @@
 
 	<!-- Center image with auto-rotation -->
 	{#if images.length > 0}
+		<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 		<div
 			class="absolute inset-0 flex items-center justify-center"
-			on:mouseenter={() => (isHovered = true)}
-			on:mouseleave={() => (isHovered = false)}
+			onmouseenter={() => (isHovered = true)}
+			onmouseleave={() => (isHovered = false)}
 			role="img"
 			tabindex="0"
 		>
@@ -67,7 +68,7 @@
 								class="h-2 w-2 rounded-full transition-all duration-200 {index === currentIndex
 									? 'bg-white'
 									: 'bg-white/40'}"
-								on:click={() => (currentIndex = index)}
+								onclick={() => (currentIndex = index)}
 								aria-label="View project {index + 1}"
 							></button>
 						{/each}
