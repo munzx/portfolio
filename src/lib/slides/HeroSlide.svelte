@@ -48,7 +48,7 @@
 		</div>
 	{/if}
 
-	<div class="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+	<div class="relative z-10 mx-auto flex h-full w-full max-w-7xl items-center px-4">
 		<!-- Content Container with responsive layout -->
 		<div
 			class="flex w-full {centerContent ? 'justify-center text-center' : ''} {reverseLayout
@@ -82,12 +82,8 @@
 			</div>
 
 			<!-- Right Visual -->
-			<div class="flex w-full flex-1 items-center justify-center">
-				<div
-					class="w-full max-w-sm scale-75 transform sm:max-w-lg sm:scale-85 lg:max-w-2xl lg:scale-90"
-				>
-					<MacBookProMockup {imageUrl} {altText} />
-				</div>
+			<div class="flex h-96 w-full flex-1 items-center justify-center">
+				<MacBookProMockup {imageUrl} {altText} />
 			</div>
 		</div>
 	</div>

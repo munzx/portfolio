@@ -60,7 +60,7 @@
 		></div>
 	</div>
 
-	<div class="relative z-10 w-full max-w-7xl px-8 py-16">
+	<div class="relative z-10 w-full max-w-5xl px-8 py-16">
 		<!-- Header Section -->
 		<div class="mb-16 text-center">
 			<h2

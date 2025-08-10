@@ -45,7 +45,7 @@
 </script>
 
 <BaseSlide className="bg-black text-gray-50">
-	<div class="relative container mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="relative container mx-auto h-full max-w-5xl px-4 sm:px-6 lg:px-8">
 		<!-- Floating geometric shapes -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
 			<div

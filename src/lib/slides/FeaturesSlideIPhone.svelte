@@ -45,7 +45,7 @@
 </script>
 
 <BaseSlide className="bg-black text-gray-50">
-	<div class="relative container mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="relative container mx-auto h-full max-w-5xl px-4 sm:px-6 lg:px-8">
 		<!-- Floating geometric shapes -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
 			<div
@@ -127,7 +127,7 @@
 					<div
 						class="w-full scale-75 transform transition-transform duration-700
 						       ease-out hover:scale-95 sm:scale-90 md:scale-100
-						       lg:scale-110 lg:hover:scale-105"
+						       lg:scale-110 lg:hover:scale-100"
 						role="img"
 						aria-label="iPhone displaying {currentFeature.title} feature"
 					>

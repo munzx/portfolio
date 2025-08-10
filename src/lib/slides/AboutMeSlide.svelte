@@ -46,7 +46,7 @@
 </script>
 
 <BaseSlide className="relative bg-black text-gray-50">
-	<div class="relative z-10 flex h-full w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+	<div class="relative z-10 flex h-full w-full max-w-5xl items-center px-4 sm:px-6 lg:px-8">
 		<!-- Floating geometric shapes -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">
 			<div
@@ -70,49 +70,49 @@
 					<header class="space-y-3">
 						<h1
 							class="text-3xl leading-tight font-semibold tracking-tight text-white
-							       sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+							       sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
 						>
 							{name}
 						</h1>
 						<p
 							class="text-lg font-medium text-gray-100 opacity-90
-						          sm:text-xl md:text-2xl lg:text-3xl"
+						          sm:text-lg md:text-xl lg:text-2xl"
 						>
 							{title}
 						</p>
 					</header>
 
 					<!-- Description -->
-					<p class="max-w-xl text-base leading-relaxed text-gray-400 sm:text-lg">
+					<p class="max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base">
 						{description}
 					</p>
 
 					<!-- Stats -->
 					<div class="grid grid-cols-3 gap-4 pt-4 sm:gap-6 lg:gap-8">
 						<div class="text-center">
-							<div class="text-xl font-bold text-white sm:text-2xl">{experience}</div>
-							<div class="text-xs text-gray-400 sm:text-sm">Experience</div>
+							<div class="text-lg font-bold text-white sm:text-xl">{experience}</div>
+							<div class="] text-xs text-gray-400">Experience</div>
 						</div>
 						<div class="text-center">
-							<div class="text-xl font-bold text-white sm:text-2xl">{projectsCompleted}+</div>
-							<div class="text-xs text-gray-400 sm:text-sm">Projects</div>
+							<div class="text-lg font-bold text-white sm:text-xl">{projectsCompleted}+</div>
+							<div class="] text-xs text-gray-400">Projects</div>
 						</div>
 						<div class="text-center">
-							<div class="text-xl font-bold text-white sm:text-2xl">∞</div>
-							<div class="text-xs text-gray-400 sm:text-sm">Ideas</div>
+							<div class="text-lg font-bold text-white sm:text-xl">∞</div>
+							<div class="] text-xs text-gray-400">Ideas</div>
 						</div>
 					</div>
 
 					<!-- Skills -->
 					{#if hasSkills}
 						<div class="space-y-3 pt-4">
-							<h3 class="text-base font-semibold text-gray-100 sm:text-lg">Core Skills</h3>
+							<h3 class="text-sm font-semibold text-gray-100 sm:text-base">Core Skills</h3>
 							<div class="flex flex-wrap gap-2">
 								{#each skills as skill}
 									<span
 										class="rounded-lg border px-2 py-1 text-xs font-medium text-gray-100
 										       transition-colors hover:bg-white/5 sm:px-3 sm:py-1.5
-										       sm:text-sm"
+										       sm:text-xs"
 										style="background-color: {accentColor}20; border-color: {accentColor}30;"
 									>
 										{skill}
@@ -132,7 +132,7 @@
 										class="flex items-center space-x-2 rounded-xl border border-white/20
 										       px-3 py-2 text-xs font-medium text-gray-100 transition-all duration-300
 										       hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/5 sm:px-4
-										       sm:text-sm"
+										       sm:text-xs"
 										aria-label="Send email to {name}"
 									>
 										<svg
@@ -157,7 +157,7 @@
 										class="flex items-center space-x-2 rounded-xl border border-white/20
 										       px-3 py-2 text-xs font-medium text-gray-100 transition-all duration-300
 										       hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/5 sm:px-4
-										       sm:text-sm"
+										       sm:text-xs"
 										aria-label="View {name}'s LinkedIn profile"
 									>
 										<svg
@@ -183,7 +183,7 @@
 										class="flex items-center space-x-2 rounded-xl border border-white/20
 										       px-3 py-2 text-xs font-medium text-gray-100 transition-all duration-300
 										       hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/5 sm:px-4
-										       sm:text-sm"
+										       sm:text-xs"
 										aria-label="View {name}'s GitHub profile"
 									>
 										<svg
@@ -209,7 +209,7 @@
 										class="flex items-center space-x-2 rounded-xl border border-white/20
 										       px-3 py-2 text-xs font-medium text-gray-100 transition-all duration-300
 										       hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/5 sm:px-4
-										       sm:text-sm"
+										       sm:text-xs"
 										aria-label="Visit {name}'s website"
 									>
 										<svg

@@ -90,7 +90,7 @@
 		width="100%"
 		height="100%"
 		viewBox="0 0 {dimensions.svg.width} {dimensions.svg.height}"
-		class="relative z-10 max-h-[300px] w-full"
+		class="relative z-10 max-h-[50rem] w-full"
 		preserveAspectRatio="xMidYMid meet"
 	>
 		<defs>

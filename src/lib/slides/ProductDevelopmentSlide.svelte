@@ -4,7 +4,7 @@
 
 <BaseSlide className="flex h-full min-h-screen justify-center items-center">
 	<section class="flex h-full w-full items-center justify-center">
-		<div class="relative mx-auto w-full max-w-7xl">
+		<div class="relative mx-auto w-full max-w-5xl">
 			<!-- Main container for the process flow -->
 			<div
 				class="relative flex flex-col items-stretch justify-between space-y-16 lg:flex-row lg:space-y-0 lg:space-x-4"

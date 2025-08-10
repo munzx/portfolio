@@ -39,7 +39,7 @@
 		></div>
 	</div>
 
-	<div class="relative z-10 flex h-full w-full max-w-7xl flex-col justify-center px-8">
+	<div class="relative z-10 flex h-full w-full max-w-5xl flex-col justify-center px-8">
 		<!-- Header Section -->
 		<div class="mb-16 text-center">
 			<h2
