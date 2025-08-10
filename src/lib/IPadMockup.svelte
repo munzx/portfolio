@@ -167,6 +167,25 @@
 			<filter id="ipadDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
 				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color={shadow} flood-opacity="0.20" />
 			</filter>
+
+			<!-- Image clipping path - defines the exact usable screen area -->
+			<clipPath id="ipad-image-clip-{orientation}">
+				<path
+					d="M 17 {14 + statusBarHeight + 5} 
+					   L {17 + dimensions.device.width - 34} {14 + statusBarHeight + 5} 
+					   L {17 + dimensions.device.width - 34} {14 + dimensions.device.height - 30 - radius.screen} 
+					   Q {17 + dimensions.device.width - 34} {14 + dimensions.device.height - 30} {17 +
+						dimensions.device.width -
+						34 -
+						radius.screen} {14 + dimensions.device.height - 30} 
+					   L {17 + radius.screen} {14 + dimensions.device.height - 30} 
+					   Q 17 {14 + dimensions.device.height - 30} 17 {14 +
+						dimensions.device.height -
+						30 -
+						radius.screen} 
+					   Z"
+				/>
+			</clipPath>
 		</defs>
 
 		<!-- Main device group -->
@@ -207,9 +226,8 @@
 				x={17}
 				y={14 + statusBarHeight + 5}
 				width={dimensions.device.width - 32 - 2}
-				height={dimensions.device.height - 31 - statusBarHeight - 4}
-				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
-				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
+				preserveAspectRatio="xMidYMin slice"
+				clip-path="url(#ipad-image-clip-{orientation})"
 			/>
 
 			<!-- Status bar overlay with rounded top, straight bottom -->

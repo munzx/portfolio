@@ -57,6 +57,7 @@
 				style="background-color: {accentColor}; animation-delay: 2s;"
 			></div>
 		</div>
+		<!-- Main content -->
 		<div class="flex h-full min-h-screen items-center justify-center">
 			<div
 				class="grid w-full grid-cols-1 items-center gap-8 md:gap-12
@@ -125,7 +126,7 @@
 					       lg:order-none lg:py-0"
 				>
 					<div
-						class="scale-75 transform transition-transform duration-700
+						class="w-full scale-75 transform transition-transform duration-700
 						       ease-out hover:scale-90 sm:scale-85 md:scale-95
 						       lg:scale-100 lg:hover:scale-95"
 						role="img"

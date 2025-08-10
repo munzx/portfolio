@@ -213,13 +213,31 @@
 	images={{
 		macbook: '/img/surplusbite/desktop.png',
 		ipad: '/img/surplusbite/desktop.png',
-		iphone: '/img/surplusbite/desktop.png'
+		iphone: '/img/surplusbite/iphone.png'
 	}}
 	orientation={{
-		ipad: 'landscape',
+		ipad: 'portrait',
 		iphone: 'portrait'
 	}}
 />
+
+<!-- 6. SOCIALWALL - Single Image Web Showcase -->
+<FeatureSlideWeb
+	title="SocialWall"
+	subtitle="Where Engagement Becomes Experience"
+	description="A dynamic display platform transforming social buzz into immersive, moderated visual spectacles for events and campaigns."
+	imageUrl="/img/socialwall/desktop.png"
+	altText="SocialWall Live Display"
+	accentColor="#7c3aed"
+	features={[
+		'Multi-Platform Hashtag Aggregation – Real-time feeds from 20+ social sources in a unified dashboard',
+		'Realtime Moderation – Instant content filtering and approval for flawless curation',
+		'Scalable Display Control – Unlimited screens with adaptive layouts for any venue or campaign'
+	]}
+	reverse={false}
+/>
+
+<!-- later -->
 
 <!-- 6. FITBITE - Multi-Device Platform (3 images) -->
 <MultiDeviceSlide
@@ -264,22 +282,6 @@
 		ipad: 'portrait',
 		iphone: 'landscape'
 	}}
-/>
-
-<!-- 9. SOCIALWALL - Single Image Web Showcase -->
-<FeatureSlideWeb
-	title="SocialWall"
-	subtitle="Where Engagement Becomes Experience"
-	description="A dynamic display platform transforming social buzz into immersive, moderated visual spectacles for events and campaigns."
-	imageUrl="/img/socialwall/desktop.png"
-	altText="SocialWall Live Display"
-	accentColor="#7c3aed"
-	features={[
-		'Multi-Platform Hashtag Aggregation – Real-time feeds from 20+ social sources in a unified dashboard',
-		'Realtime Moderation – Instant content filtering and approval for flawless curation',
-		'Scalable Display Control – Unlimited screens with adaptive layouts for any venue or campaign'
-	]}
-	reverse={false}
 />
 
 <FeaturesSlideIPad

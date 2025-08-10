@@ -125,7 +125,7 @@
 					       lg:order-none lg:py-0"
 				>
 					<div
-						class="scale-75 transform transition-transform duration-700
+						class="w-full scale-75 transform transition-transform duration-700
 						       ease-out hover:scale-95 sm:scale-90 md:scale-100
 						       lg:scale-110 lg:hover:scale-105"
 						role="img"

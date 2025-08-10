@@ -220,6 +220,25 @@
 			<filter id="iphoneDeviceShadow" x="-20%" y="-20%" width="140%" height="140%">
 				<feDropShadow dx="1" dy="2" stdDeviation="6" flood-color={shadow} flood-opacity="0.20" />
 			</filter>
+
+			<!-- Image clipping path - defines the exact usable screen area -->
+			<clipPath id="iphone-image-clip-{orientation}">
+				<path
+					d="M 13 {10 + statusBarHeight + 5} 
+					   L {13 + dimensions.device.width - 26} {10 + statusBarHeight + 5} 
+					   L {13 + dimensions.device.width - 26} {10 + dimensions.device.height - 25 - radius.screen} 
+					   Q {13 + dimensions.device.width - 26} {10 + dimensions.device.height - 25} {13 +
+						dimensions.device.width -
+						26 -
+						radius.screen} {10 + dimensions.device.height - 23} 
+					   L {13 + radius.screen} {10 + dimensions.device.height - 23} 
+					   Q 13 {10 + dimensions.device.height - 25} 13 {10 +
+						dimensions.device.height -
+						23 -
+						radius.screen} 
+					   Z"
+				/>
+			</clipPath>
 		</defs>
 		<!-- Main device group -->
 		<g
@@ -268,12 +287,11 @@
 			<!-- Background image inside the screen area -->
 			<image
 				href={imageUrl}
-				x="13"
+				x={13}
 				y={10 + statusBarHeight + 5}
 				width={dimensions.device.width - 26}
-				height={dimensions.device.height - 23 - statusBarHeight - 5}
-				preserveAspectRatio={isPortrait ? 'none' : 'xMidYMin slice'}
-				clip-path="inset(0 0 0 0 round 0 0 {radius.screen}px {radius.screen}px)"
+				preserveAspectRatio="xMidYMin slice"
+				clip-path="url(#iphone-image-clip-{orientation})"
 			/>
 
 			<!-- Status bar overlay with rounded top, straight bottom -->

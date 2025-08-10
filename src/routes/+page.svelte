@@ -288,7 +288,7 @@
 />
 
 <!-- Slide 2: Hero Section -->
-<HeroSlide {galleryImages} />
+<!-- <HeroSlide {galleryImages} /> -->
 
 <!-- Slide 4: Features Overview -->
 <FeaturesSlideIPhone
@@ -313,7 +313,7 @@
 <GallerySlide {galleryImages} {centerIndex} />
 
 <!-- Slide 6: Multi-Device Showcase -->
-<MultiDeviceSlide {assetLibraryImage} {feedbackImage} {liveCanvasImage} />
+<!-- <MultiDeviceSlide {assetLibraryImage} {feedbackImage} {liveCanvasImage} /> -->
 
 <!-- Slide 7: Final message -->
 <TextSlide

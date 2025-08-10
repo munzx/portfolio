@@ -14,14 +14,10 @@
 	export let title: string = 'Designed for<br />Creative Collaboration';
 	export let description: string =
 		"AuraFlow brings your entire creative process into one place. It's the tool your team has been waiting for.";
-	export let accentColor: string = '#0071e3'; // Default accent color, can be overridden
 </script>
 
 <BaseSlide className="flex h-full min-h-screen justify-center items-center text-[#f5f5f7]">
-	<div
-		class="container mx-auto flex h-full max-w-7xl items-center px-8"
-		style="--accent-color: {accentColor};"
-	>
+	<div class="container mx-auto flex h-full max-w-7xl items-center px-8">
 		<div class="grid w-full items-center gap-16 lg:grid-cols-2 lg:grid-rows-1">
 			<!-- Features List -->
 			<div class="flex flex-col justify-center space-y-6" class:lg:order-2={reverse}>
@@ -38,19 +34,12 @@
 							class="group cursor-pointer rounded-xl border border-transparent p-4 transition-all duration-300 hover:border-[rgba(255,255,255,0.15)] hover:bg-[rgba(40,40,40,0.5)]"
 							class:border-[rgba(255,255,255,0.15)]={item.active}
 							class:bg-[rgba(40,40,40,0.5)]={item.active}
-							style={item.active
-								? `border-color: ${accentColor}40; background-color: ${accentColor}10;`
-								: ''}
 							on:mouseenter={() => onFeatureHover(index)}
 							role="button"
 							tabindex="0"
 							on:keydown={(e) => e.key === 'Enter' && onFeatureHover(index)}
 						>
-							<h3
-								class="mb-2 text-lg font-semibold text-[#f5f5f7]"
-								class:text-white={item.active}
-								style={item.active ? `color: ${accentColor};` : ''}
-							>
+							<h3 class="mb-2 text-lg font-semibold text-[#f5f5f7]" class:text-white={item.active}>
 								{item.title}
 							</h3>
 							<p class="text-sm text-[#a1a1a6]">
@@ -63,7 +52,7 @@
 
 			<!-- Interactive MacBook Display -->
 			<div class="flex h-full items-center justify-center" class:lg:order-1={reverse}>
-				<div class="scale-90 transform transition-all duration-700 hover:scale-95">
+				<div class="w-full scale-90 transform transition-all duration-700 hover:scale-95">
 					<MacBookProMockup
 						imageUrl={currentFeature.image}
 						altText="AuraFlow {currentFeature.title} feature"
@@ -77,7 +66,7 @@
 <style>
 	/* Enhanced focus states for accessibility */
 	[role='button']:focus-visible {
-		outline: 2px solid var(--accent-color, #0071e3);
+		outline: 2px solid #0071e3;
 		outline-offset: 2px;
 		border-radius: 1rem;
 	}
