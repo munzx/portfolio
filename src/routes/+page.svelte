@@ -310,7 +310,7 @@
 />
 
 <!-- Slide 5: Gallery Showcase -->
-<GallerySlide {galleryImages} {centerIndex} />
+<!-- <GallerySlide {galleryImages} {centerIndex} /> -->
 
 <!-- Slide 6: Multi-Device Showcase -->
 <!-- <MultiDeviceSlide {assetLibraryImage} {feedbackImage} {liveCanvasImage} /> -->

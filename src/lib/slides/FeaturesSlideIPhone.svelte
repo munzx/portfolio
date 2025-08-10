@@ -19,6 +19,7 @@
 		title?: string;
 		description?: string;
 		accentColor?: string;
+		orientation?: 'portrait' | 'landscape';
 	}
 
 	let {
@@ -28,7 +29,8 @@
 		reverse = false,
 		title = 'Designed for<br />Creative Collaboration',
 		description = "AuraFlow brings your entire creative process into one place. It's the tool your team has been waiting for.",
-		accentColor = '#fff'
+		accentColor = '#fff',
+		orientation = 'portrait'
 	}: Props = $props();
 
 	// Event handlers
@@ -132,7 +134,7 @@
 						aria-label="iPhone displaying {currentFeature.title} feature"
 					>
 						<IPhoneMockup
-							orientation="portrait"
+							{orientation}
 							imageUrl={currentFeature.image}
 							altText="AuraFlow {currentFeature.title} feature demonstration"
 						/>

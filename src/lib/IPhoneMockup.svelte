@@ -50,7 +50,7 @@
 	$: dimensions = DEVICE_DIMENSIONS[orientation];
 	$: radius = BORDER_RADIUS[orientation];
 	$: isPortrait = orientation === 'portrait';
-	$: statusBarHeight = isPortrait ? 50 : 38;
+	$: statusBarHeight = isPortrait ? 28 : 38;
 	$: dynamicIslandSize = isPortrait ? { width: 40, height: 10 } : { width: 10, height: 40 };
 
 	// Color schemes based on device color and mode
@@ -160,7 +160,7 @@
 						x="13"
 						y="13"
 						width={dimensions.device.width - 26}
-						height={statusBarHeight + 30}
+						height={statusBarHeight + 45}
 						rx={radius.screen}
 						ry={radius.screen}
 						fill="white"
@@ -225,8 +225,8 @@
 			<!-- Image clipping path - defines the exact usable screen area -->
 			<clipPath id="iphone-image-clip-{orientation}">
 				<path
-					d="M 13 {10 + statusBarHeight + 5} 
-					   L {13 + dimensions.device.width - 26} {10 + statusBarHeight + 5} 
+					d="M 13 {10 + statusBarHeight + 1} 
+					   L {13 + dimensions.device.width - 26} {10 + statusBarHeight + 1} 
 					   L {13 + dimensions.device.width - 26} {10 + dimensions.device.height - 25 - radius.screen} 
 					   Q {13 + dimensions.device.width - 26} {10 + dimensions.device.height - 25} {13 +
 						dimensions.device.width -
@@ -289,7 +289,7 @@
 			<image
 				href={imageUrl}
 				x={13}
-				y={10 + statusBarHeight + 5}
+				y={10 + statusBarHeight + 8}
 				width={dimensions.device.width - 26}
 				preserveAspectRatio="xMidYMin slice"
 				clip-path="url(#iphone-image-clip-{orientation})"

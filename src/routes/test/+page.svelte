@@ -74,73 +74,43 @@
 	let portfolioGallery = [
 		'/img/surplusbite/desktop.png', // SurplusBite
 		'/img/fitbite/desktop.png', // FitBite
-		'/img/echoimpact/desktop.png', // EchoImpact
+		'/img/echoimpact/iphone.png', // EchoImpact
 		'/img/particledrive/desktop.png', // ParticleDrive
 		'/img/socialwall/desktop.png', // SocialWall
-		'/img/quotationgate/desktop.png' // QuotationGate
+		'/img/qg/desktop.png' // QuotationGate
 	];
 
 	// Website showcase data - Real app screenshots for masonry layout
 	const websiteShowcase = [
 		{
-			title: 'SurplusBite Platform',
-			image: '/img/surplusbite/desktop.png',
-			description: 'Food surplus management with automated donation matching',
-			category: 'Sustainability',
-			url: 'https://surplusbite.com'
+			title: 'SurplusBite',
+			image: '/img/websites/1.png',
+			description: 'Food surplus management with automated donation matching'
 		},
 		{
-			title: 'FitBite Mobile App',
-			image: '/img/fitbite/iphone.png',
-			description: 'Precision nutrition platform for fitness optimization',
-			category: 'Health & Fitness',
-			url: 'https://fitbite.app'
+			title: 'FitBite',
+			image: '/img/websites/3.png',
+			description: 'Precision nutrition platform for fitness optimization'
 		},
 		{
-			title: 'EchoImpact Dashboard',
-			image: '/img/echoimpact/desktop.png',
-			description: 'Recycling tracking with environmental impact visualization',
-			category: 'Environmental',
-			url: 'https://echoimpact.org'
+			title: 'EchoImpact',
+			image: '/img/websites/5.png',
+			description: 'Recycling tracking with environmental impact visualization'
 		},
 		{
-			title: 'ParticleDrive Marketplace',
-			image: '/img/particledrive/desktop.png',
-			description: 'AI-powered auto parts discovery and marketplace',
-			category: 'E-commerce',
-			url: 'https://particledrive.com'
+			title: 'ParticleDrive',
+			image: '/img/websites/4.png',
+			description: 'AI-powered auto parts discovery and marketplace'
 		},
 		{
-			title: 'SocialWall Display',
-			image: '/img/socialwall/desktop.png',
-			description: 'Real-time social media aggregation and display platform',
-			category: 'Social Media',
-			url: 'https://socialwall.live'
+			title: 'SocialWall',
+			image: '/img/websites/2.png',
+			description: 'Real-time social media aggregation and display platform'
 		},
 		{
-			title: 'QuotationGate Portal',
-			image: '/img/quotationgate/desktop.png',
-			description: 'Construction procurement and project management platform',
-			category: 'B2B Platform',
-			url: 'https://quotationgate.com'
-		},
-		{
-			title: 'FitBite Tablet View',
-			image: '/img/fitbite/ipad.png',
-			description: 'Nutrition dashboard optimized for tablets',
-			category: 'Health & Fitness'
-		},
-		{
-			title: 'EchoImpact Mobile',
-			image: '/img/echoimpact/iphone.png',
-			description: 'Mobile recycling tracker with rewards system',
-			category: 'Environmental'
-		},
-		{
-			title: 'ParticleDrive Catalog',
-			image: '/img/particledrive/ipad.png',
-			description: 'Parts catalog with advanced filtering and search',
-			category: 'E-commerce'
+			title: 'QuotationGate',
+			image: '/img/websites/6.png',
+			description: 'Construction procurement and project management platform'
 		}
 	];
 
@@ -175,7 +145,7 @@
 
 <!-- 3. ABOUT LEADERSHIP -->
 <AboutMeSlide
-	name="Moe Lehmando"
+	name="Munzir Suliman"
 	title="Software Engineer & Creative Developer"
 	description="Passionate about creating beautiful, functional digital experiences that make a difference. I specialize in full-stack development, UX/UI design, and bringing innovative ideas to life through code."
 	portfolioImage="/img/me.jpg"
@@ -205,15 +175,31 @@
 	accentColor="#6366f1"
 />
 
-<!-- 5. SURPLUSBITE - Multi-Device Showcase (3 images) -->
+<!-- 5. PARTICLEDRIVE - Multi-Device Commerce (3 images) -->
+<MultiDeviceSlide
+	title="ParticleDrive"
+	subtitle="Auto Commerce Platform"
+	description="An AI-curated marketplace revolutionizing auto part discovery and conversations with precision matching."
+	images={{
+		macbook: '/img/particledrive/desktop3.png',
+		ipad: '/img/particledrive/ipad2.png',
+		iphone: '/img/particledrive/iphone.png'
+	}}
+	orientation={{
+		ipad: 'portrait',
+		iphone: 'portrait'
+	}}
+/>
+
+<!-- 6. SURPLUSBITE - Multi-Device Showcase (3 images) -->
 <MultiDeviceSlide
 	title="SurplusBite"
 	subtitle="The Intelligent Surplus Management"
 	description="A seamless platform transforming food surplus into community nourishment through automated donation management."
 	images={{
 		macbook: '/img/surplusbite/desktop.png',
-		ipad: '/img/surplusbite/desktop.png',
-		iphone: '/img/surplusbite/desktop.png'
+		ipad: '/img/surplusbite/ipad.png',
+		iphone: '/img/surplusbite/iphone.png'
 	}}
 	orientation={{
 		ipad: 'landscape',
@@ -221,49 +207,45 @@
 	}}
 />
 
-<!-- 6. FITBITE - Multi-Device Platform (3 images) -->
+<!-- 7. FITBITE - Multi-Device Platform (3 images) -->
 <MultiDeviceSlide
 	title="FitBite"
 	subtitle="Precision Nutrition Platform"
 	description="A powerful meal optimization platform designed to elevate fitness outcomes through hyper-personalized nutrition."
 	images={{
-		macbook: '/img/surplusbite/desktop.png',
-		ipad: '/img/surplusbite/ipad.png',
-		iphone: '/img/surplusbite/iphone.png'
+		macbook: '/img/fitbite/desktop.png',
+		ipad: '/img/fitbite/ipad.png',
+		iphone: '/img/fitbite/iphone.png'
 	}}
 	showDevices={{
 		macbook: true,
 		ipad: true,
-		iphone: false
-	}}
-/>
-
-<!-- 7. ECHOIMPACT - Multi-Device Sustainability (3 images) -->
-<MultiDeviceSlide
-	title="EchoImpact"
-	subtitle="Sustainable Action Platform"
-	description="A smart ecosystem converting recycling efforts into measurable environmental progress."
-	images={{
-		macbook: '/img/echoimpact/desktop.png',
-		ipad: '/img/echoimpact/ipad.png',
-		iphone: '/img/echoimpact/iphone.png'
-	}}
-/>
-
-<!-- 8. PARTICLEDRIVE - Multi-Device Commerce (3 images) -->
-<MultiDeviceSlide
-	title="ParticleDrive"
-	subtitle="Auto Commerce Platform"
-	description="An AI-curated marketplace revolutionizing auto part discovery and conversations with precision matching."
-	images={{
-		macbook: '/img/surplusbite/desktop.png',
-		ipad: '/img/surplusbite/desktop.png',
-		iphone: '/img/surplusbite/desktop.png'
+		iphone: true
 	}}
 	orientation={{
-		ipad: 'portrait',
-		iphone: 'landscape'
+		ipad: 'landscape',
+		iphone: 'portrait'
 	}}
+/>
+
+<!-- 8. ECHOIMPACT - Multi-Device Sustainability (3 images) -->
+<FeaturesSlideIPhone
+	featureItems={[]}
+	currentFeature={{
+		title: 'EchoImpact',
+		description:
+			'A smart ecosystem converting recycling efforts into measurable environmental progress.',
+		image: '/img/echoimpact/iphone.png',
+		active: true
+	}}
+	onFeatureHover={(index) => {
+		return 0; // Placeholder for hover functionality
+	}}
+	reverse={false}
+	title="EchoImpact"
+	description="A smart ecosystem converting recycling efforts into measurable environmental progress."
+	accentColor="#7c3aed"
+	orientation="portrait"
 />
 
 <!-- 9. SOCIALWALL - Single Image Web Showcase -->
@@ -282,97 +264,24 @@
 	reverse={false}
 />
 
-<FeaturesSlideIPad
-	featureItems={[
-		{
-			title: 'Real-time Engagement',
-			description: 'Capture live social media interactions and display them instantly.',
-			image: '/img/socialwall/ipad.png',
-			active: true
-		},
-		{
-			title: 'Customizable Layouts',
-			description: 'Tailor the display to match your event’s theme and branding.',
-			image: '/img/socialwall/ipad.png',
-			active: false
-		},
-		{
-			title: 'Analytics Dashboard',
-			description: 'Gain insights into audience engagement and content performance.',
-			image: '/img/socialwall/ipad.png',
-			active: false
-		}
-	]}
-	currentFeature={{
-		title: 'Real-time Engagement',
-		description: 'Capture live social media interactions and display them instantly.',
-		image: '/img/socialwall/ipad.png',
-		active: true
-	}}
-	onFeatureHover={(index) => {
-		return 0; // Placeholder for hover functionality
-	}}
-	reverse={false}
-	title="SocialWall Features"
-	description="Transforming social media buzz into real-time visual experiences"
-	accentColor="#7c3aed"
-/>
-
-<FeaturesSlideIPhone
-	featureItems={[
-		{
-			title: 'Real-time Engagement',
-			description: 'Capture live social media interactions and display them instantly.',
-			image: '/img/socialwall/ipad.png',
-			active: true
-		},
-		{
-			title: 'Customizable Layouts',
-			description: "Tailor the display to match your event's theme and branding.",
-			image: '/img/socialwall/ipad.png',
-			active: false
-		},
-		{
-			title: 'Analytics Dashboard',
-			description: 'Gain insights into audience engagement and content performance.',
-			image: '/img/socialwall/ipad.png',
-			active: false
-		}
-	]}
-	currentFeature={{
-		title: 'Real-time Engagement',
-		description: 'Capture live social media interactions and display them instantly.',
-		image: '/img/socialwall/ipad.png',
-		active: true
-	}}
-	onFeatureHover={(index) => {
-		return 0; // Placeholder for hover functionality
-	}}
-	reverse={false}
-	title="SocialWall Features"
-	description="Transforming social media buzz into real-time visual experiences"
-	accentColor="#7c3aed"
-/>
-
-<HeroSlide imageUrl="/img/surplusbite/desktop.png" accentColor="#10b981" />
-
-<!-- 10. QUOTATIONGATE - Multi-Device B2B (3 images) -->
-<MultiDeviceSlide
+<!-- 10. QUOTATIONGATE - Multi-Device B2B  -->
+<HeroSlide
 	title="QuotationGate"
 	subtitle="Digital Construction Procurement"
-	description="A next-gen platform streamlining contractor-supplier connections through intelligent project matching."
-	images={{
-		macbook: '/img/quotationgate/desktop.png',
-		ipad: '/img/quotationgate/ipad.png',
-		iphone: '/img/quotationgate/iphone.png'
-	}}
+	description="A next-gen platform streamlining contractor-supplier connections through intelligent project matching"
+	imageUrl="/img/qg/desktop.png"
+	accentColor="#10b981"
 />
 
 <!-- 11. DEVELOPMENT PROCESS -->
 <ProductDevelopmentSlide />
 
 <!-- 12. PORTFOLIO GALLERY -->
-<GallerySlide galleryImages={portfolioGallery} centerIndex={0} />
+<GallerySlide
+	title="Turn Your Idea Into Reality"
+	description="Develop your idea into a product and iterate rapidly to validate it"
+	galleryImages={portfolioGallery}
+/>
 
 <!-- 13. WEBSITE SHOWCASE - MASONRY -->
 <MasonrySlide
