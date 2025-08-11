@@ -6,5 +6,11 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	server: {
 		port: 5174,
+	},
+	define: {
+		global: 'globalThis'
+	},
+	ssr: {
+		external: ['@sendgrid/mail']
 	}
 });

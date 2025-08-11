@@ -8,12 +8,7 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
-		adapter: adapter({
-			// Enable Node.js compatibility for built-in modules
-			platformProxy: {
-				persist: false
-			}
-		})
+		adapter: adapter()
 	}
 };
 
