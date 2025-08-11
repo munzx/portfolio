@@ -183,7 +183,7 @@
 								class="w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
 							>
 								<option value="">Select budget range</option>
-								<option value="$8k - $25k">$8k - $25k (MVP)</option>
+								<option value="$5k - $25k">$5k - $25k (MVP)</option>
 								<option value="$25k - $75k">$25k - $75k (Full Product)</option>
 								<option value="$75k+">$75k+ (Enterprise)</option>
 								<option value="not-sure">Not sure yet</option>
