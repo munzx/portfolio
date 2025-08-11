@@ -1,8 +1,15 @@
 import sgMail from '@sendgrid/mail';
-import { SENDGRID_API_KEY, SENDGRID_FROM_EMAIL, SENDGRID_TO_EMAIL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
-// Initialize SendGrid
-sgMail.setApiKey(SENDGRID_API_KEY);
+// Initialize SendGrid with environment variables
+const SENDGRID_API_KEY = env.SENDGRID_API_KEY || '';
+const SENDGRID_FROM_EMAIL = env.SENDGRID_FROM_EMAIL || '';
+const SENDGRID_TO_EMAIL = env.SENDGRID_TO_EMAIL || '';
+
+// Only set API key if it exists
+if (SENDGRID_API_KEY) {
+    sgMail.setApiKey(SENDGRID_API_KEY);
+}
 
 export interface EmailData {
     name: string;
@@ -24,6 +31,14 @@ export interface EmailResult {
 // SendGrid email sending implementation for business notifications
 export async function sendContactEmail(data: EmailData): Promise<EmailResult> {
     try {
+        // Check if required environment variables are available
+        if (!SENDGRID_API_KEY || !SENDGRID_FROM_EMAIL || !SENDGRID_TO_EMAIL) {
+            return {
+                success: false,
+                error: 'SendGrid configuration missing. Please check environment variables.'
+            };
+        }
+
         const htmlContent = formatContactEmailHtml(data);
         const textContent = formatContactEmailText(data);
 
@@ -63,6 +78,14 @@ export async function sendContactEmail(data: EmailData): Promise<EmailResult> {
 // Send confirmation email to user
 export async function sendConfirmationEmail(data: EmailData): Promise<EmailResult> {
     try {
+        // Check if required environment variables are available
+        if (!SENDGRID_API_KEY || !SENDGRID_FROM_EMAIL) {
+            return {
+                success: false,
+                error: 'SendGrid configuration missing. Please check environment variables.'
+            };
+        }
+
         console.log('Attempting to send confirmation email to:', data.email);
         console.log('SendGrid FROM email:', SENDGRID_FROM_EMAIL);
 
