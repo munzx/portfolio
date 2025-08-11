@@ -1,6 +1,7 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { sendContactEmail, sendConfirmationEmail, type EmailData } from '$lib/server/email';
 import { dev } from '$app/environment';
+import { env } from '$env/dynamic/private';
 
 interface ContactFormData {
     name: string;
@@ -109,14 +110,42 @@ export const POST: RequestHandler = async ({ request }) => {
 
         // Origin/Referer validation (in production)
         if (!dev) {
-            const allowedOrigins = [
-                'https://yourdomain.com',
-                'https://www.yourdomain.com',
-                // Add your actual domain here
-            ];
+            // Get allowed origins from environment variable or use defaults
+            const allowedOriginsEnv = env.ALLOWED_ORIGINS || '';
+            const allowedOrigins: (string | RegExp)[] = allowedOriginsEnv
+                ? allowedOriginsEnv.split(',').map((origin: string) => origin.trim())
+                : [
+                    'https://moheera.com',
+                    'https://www.moheera.com',
+                    'https://portfolio.moheera.com',
+                    // Cloudflare Pages patterns - allow any .pages.dev subdomain
+                    /^https:\/\/.*\.pages\.dev$/,
+                    /^https:\/\/.*\.cloudflare\.com$/,
+                    // Allow any subdomain of moheera.com
+                    /^https:\/\/.*\.moheera\.com$/,
+                ];
 
-            const isValidOrigin = origin && allowedOrigins.includes(origin);
-            const isValidReferer = referer && allowedOrigins.some(domain => referer.startsWith(domain));
+            const isValidOrigin = origin && (
+                allowedOrigins.some((allowed: string | RegExp) => {
+                    if (typeof allowed === 'string') {
+                        return allowed === origin;
+                    } else {
+                        // Handle regex patterns
+                        return allowed.test(origin);
+                    }
+                })
+            );
+
+            const isValidReferer = referer && (
+                allowedOrigins.some((allowed: string | RegExp) => {
+                    if (typeof allowed === 'string') {
+                        return referer.startsWith(allowed);
+                    } else {
+                        // Handle regex patterns
+                        return allowed.test(referer);
+                    }
+                })
+            );
 
             if (!isValidOrigin && !isValidReferer) {
                 console.warn(`Invalid origin/referer: ${origin || 'none'} / ${referer || 'none'} from IP: ${clientIP}`);

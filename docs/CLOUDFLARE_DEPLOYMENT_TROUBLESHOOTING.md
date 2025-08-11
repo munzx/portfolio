@@ -12,6 +12,11 @@
 - **Solution**: Added `nodejs_compat` flag to `wrangler.toml`
 - **Status**: ✅ Configured
 
+### Origin Validation Error
+- **Issue**: "Invalid request origin" error on `portfolio.moheera.com`
+- **Solution**: Updated allowed origins to include `moheera.com` domains
+- **Status**: ✅ Fixed - Now allows moheera.com and all subdomains
+
 ## Deployment Steps
 
 ### 1. Repository Configuration
@@ -19,10 +24,20 @@
 ✅ Build output directory: `.svelte-kit/output/client`
 ✅ Local build successful
 ✅ Environment variables handled gracefully
+✅ Domain validation configured for moheera.com
 
-### 2. Cloudflare Pages Setup
+### 2. Allowed Origins Configuration
 
-#### Option A: GitHub Integration (Recommended)
+The contact form now accepts requests from:
+- `https://moheera.com`
+- `https://www.moheera.com`
+- `https://portfolio.moheera.com` ✅
+- Any subdomain of `moheera.com` (e.g., `*.moheera.com`)
+- Any `.pages.dev` subdomain (for Cloudflare Pages)
+
+### 3. Cloudflare Pages Setup
+
+#### GitHub Integration (Recommended)
 1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
 2. Click "Create a project"
 3. Connect your GitHub account
@@ -32,46 +47,39 @@
    - **Build command**: `npm run build`
    - **Build output directory**: `.svelte-kit/output/client`
 
-#### Option B: Wrangler CLI Deploy
-```bash
-npm run build
-npx wrangler pages deploy .svelte-kit/output/client
-```
-
-### 3. Environment Variables (Required for Email Function)
+### 4. Environment Variables (Required for Email Function)
 
 Set these in Cloudflare Pages Dashboard after deployment:
 1. Go to **Settings** → **Environment variables**
 2. Add for Production:
    - `SENDGRID_API_KEY`: Your SendGrid API key
-   - `SENDGRID_FROM_EMAIL`: Your verified sender email
+   - `SENDGRID_FROM_EMAIL`: Your verified sender email (e.g., noreply@moheera.com)
    - `SENDGRID_TO_EMAIL`: Your business email
 
-**Note**: Without these variables, the contact form will still work but emails won't be sent.
+**Optional**: You can also set `ALLOWED_ORIGINS` to override default allowed domains
 
-### 4. Node.js Compatibility (Automatic)
+### 5. Custom Domain Setup (if using custom domain)
 
-The `wrangler.toml` file includes `nodejs_compat` flag which should automatically enable Node.js compatibility.
-
-If you still get Node.js module errors, manually add the flag:
-1. Go to **Settings** → **Functions**
-2. Add `nodejs_compat` to compatibility flags
-3. Redeploy
+If you want to use `portfolio.moheera.com` instead of `.pages.dev`:
+1. In Cloudflare Pages → **Custom domains**
+2. Add `portfolio.moheera.com`
+3. Update DNS records as instructed
 
 ## Current Status
 - ✅ Build succeeds locally and in CI
 - ✅ Environment variables handled gracefully  
 - ✅ Node.js compatibility configured
+- ✅ Origin validation configured for moheera.com domains
 - ✅ Email service will work once env vars are set
 - ✅ Contact form works without email (graceful degradation)
 
 ## What Happens Without Environment Variables
 - ✅ Site builds and deploys successfully
-- ✅ Contact form UI works normally
+- ✅ Contact form UI works normally on portfolio.moheera.com
 - ⚠️ Email sending returns graceful error message
 - ✅ No crashes or build failures
 
 ## Next Steps
 1. Deploy to Cloudflare Pages (should succeed now)
 2. Set environment variables in dashboard
-3. Test contact form functionality
+3. Test contact form functionality on portfolio.moheera.com
