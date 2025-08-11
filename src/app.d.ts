@@ -10,4 +10,11 @@ declare global {
 	}
 }
 
-export {};
+// Environment variables
+declare module '$env/static/private' {
+	export const SENDGRID_API_KEY: string;
+	export const SENDGRID_FROM_EMAIL: string;
+	export const SENDGRID_TO_EMAIL: string;
+}
+
+export { };

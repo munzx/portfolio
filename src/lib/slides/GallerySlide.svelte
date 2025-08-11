@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import LayeredGrid from '$lib/LayeredGrid.svelte';
+	import LayeredGrid from '$lib/components/LayeredGrid.svelte';
 
 	export let title: string = 'A canvas for your biggest ideas';
 	export let description: string =

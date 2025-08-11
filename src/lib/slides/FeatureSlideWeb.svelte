@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import MacBookProMockup from '$lib/MacBookProMockup.svelte';
+	import MacBookProMockup from '$lib/components/MacBookProMockup.svelte';
 
 	export let title: string = 'Discover the Future';
 	export let subtitle: string = 'Experience Innovation';
@@ -18,9 +18,10 @@
 	export let collaboratorCount: number = 0; // 0 means no collaborators shown
 	export let primaryButtonText: string = ''; // Empty string means no primary button
 	export let secondaryButtonText: string = ''; // Empty string means no secondary button
+	export let className: string = '';
 </script>
 
-<BaseSlide className="relative text-[#f5f5f7]">
+<BaseSlide className="relative text-[#f5f5f7] {className}">
 	<!-- Dynamic gradient background based on accent color -->
 	<!-- <div class="absolute inset-0 opacity-5">
 		<div

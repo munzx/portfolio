@@ -13,3 +13,4 @@ export { default as ProductDevelopmentSlide } from './ProductDevelopmentSlide.sv
 export { default as MasonrySlide } from './MasonrySlide.svelte';
 export { default as TailwindMasonrySlide } from './TailwindMasonrySlide.svelte';
 export { default as BaseSlide } from './BaseSlide.svelte';
+export { default as StepsSlide } from './StepsSlide.svelte';

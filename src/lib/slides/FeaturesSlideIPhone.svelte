@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import IPhoneMockup from '$lib/IPhoneMockup.svelte';
+	import IPhoneMockup from '$lib/components/IPhoneMockup.svelte';
 
 	// Types for better type safety
 	interface FeatureItem {
@@ -20,6 +20,7 @@
 		description?: string;
 		accentColor?: string;
 		orientation?: 'portrait' | 'landscape';
+		className?: string;
 	}
 
 	let {
@@ -30,7 +31,8 @@
 		title = 'Designed for<br />Creative Collaboration',
 		description = "AuraFlow brings your entire creative process into one place. It's the tool your team has been waiting for.",
 		accentColor = '#fff',
-		orientation = 'portrait'
+		orientation = 'portrait',
+		className = ''
 	}: Props = $props();
 
 	// Event handlers
@@ -46,7 +48,7 @@
 	};
 </script>
 
-<BaseSlide className="bg-black text-gray-50">
+<BaseSlide className="bg-black text-gray-50 {className}">
 	<div class="relative container mx-auto h-full max-w-5xl px-4 sm:px-6 lg:px-8">
 		<!-- Floating geometric shapes -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">

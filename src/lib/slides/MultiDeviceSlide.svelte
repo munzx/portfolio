@@ -1,8 +1,8 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import MacBookProMockup from '$lib/MacBookProMockup.svelte';
-	import IPadMockup from '$lib/IPadMockup.svelte';
-	import IPhoneMockup from '$lib/IPhoneMockup.svelte';
+	import MacBookProMockup from '$lib/components/MacBookProMockup.svelte';
+	import IPadMockup from '$lib/components/IPadMockup.svelte';
+	import IPhoneMockup from '$lib/components/IPhoneMockup.svelte';
 
 	export let images = {
 		macbook: 'https://demofyit-assets.s3.eu-west-1.amazonaws.com/macbook-pro-mockup.png',
@@ -24,10 +24,12 @@
 		macbook: true
 	};
 
+	export let className: string = '';
+
 	export let accentColor: string = '#0071e3'; // Default Apple blue
 </script>
 
-<BaseSlide className=" text-[#f5f5f7]">
+<BaseSlide className=" text-[#f5f5f7] {className}">
 	<div class="container mx-auto flex max-w-5xl flex-col items-center justify-center px-6">
 		<!-- Floating geometric shapes -->
 		<div class="pointer-events-none absolute inset-0 overflow-hidden">

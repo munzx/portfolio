@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import IPadMockup from '$lib/IPadMockup.svelte';
+	import IPadMockup from '$lib/components/IPadMockup.svelte';
 
 	// Types for better type safety
 	interface FeatureItem {

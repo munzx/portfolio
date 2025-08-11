@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import MacBookProMockup from '$lib/MacBookProMockup.svelte';
+	import MacBookProMockup from '$lib/components/MacBookProMockup.svelte';
 
 	// Required props
 	export let imageUrl: string;
@@ -19,13 +19,14 @@
 	export let textColor: string = '#f5f5f7';
 	export let subtitleColor: string = '#f5f5f7';
 	export let descriptionColor: string = '#a1a1a6';
+	export let className: string = '';
 
 	// Layout props
 	export let reverseLayout: boolean = false;
 	export let centerContent: boolean = false;
 </script>
 
-<BaseSlide className="text-[#f5f5f7]" {backgroundColor}>
+<BaseSlide className="text-[#f5f5f7] {className}" {backgroundColor}>
 	<!-- Dynamic gradient background based on accent color -->
 	<!-- <div class="absolute inset-0 opacity-5">
 		<div

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import BaseSlide from './BaseSlide.svelte';
-	import MacBookProMockup from '$lib/MacBookProMockup.svelte';
+	import MacBookProMockup from '$lib/components/MacBookProMockup.svelte';
 
 	export let featureItems: Array<{
 		title: string;

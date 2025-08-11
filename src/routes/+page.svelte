@@ -8,13 +8,15 @@
 		GallerySlide,
 		MultiDeviceSlide,
 		TextSlide,
-		FeaturesSlideIPad,
-		FeaturesSlideMacBook,
 		FeatureSlideWeb,
 		ProductDevelopmentSlide,
-		MasonrySlide
+		StepsSlide
 	} from '$lib/slides';
 	import TailwindMasonrySlide from '$lib/slides/TailwindMasonrySlide.svelte';
+	import PricingSection from '$lib/components/PricingSection.svelte';
+	import ContactForm from '$lib/components/ContactForm.svelte';
+	import type { PricingTier } from '$lib/stores/pricing';
+	import type { StepItem } from '$lib/types/steps';
 
 	// Company information for Moheera
 	const moheeraCompany = {
@@ -107,6 +109,97 @@
 		{ image: '/img/websites/6.png', label: 'live' },
 		{ image: '/img/websites/11.png', label: 'live' }
 	];
+
+	// Pricing tiers configuration
+	const pricingTiers: PricingTier[] = [
+		{
+			name: 'MVP Builder',
+			range: '$8k - $25k',
+			timeline: '4-8 weeks',
+			ideal: 'Startups & entrepreneurs testing their first product idea',
+			includes: [
+				'MVP Development & Launch',
+				'Core Features Implementation',
+				'Mobile-Responsive Design',
+				'Basic User Authentication',
+				'Database Setup & Hosting',
+				'1 Month Post-Launch Support'
+			]
+		},
+		{
+			name: 'Full Product',
+			range: '$25k - $75k',
+			timeline: '8-16 weeks',
+			ideal: 'Established businesses ready to build a comprehensive solution',
+			popular: true,
+			includes: [
+				'Complete Product Development',
+				'Advanced Features & Integrations',
+				'Custom UI/UX Design',
+				'Admin Panel & Analytics',
+				'Payment Processing',
+				'API Development',
+				'3 Months Post-Launch Support',
+				'Performance Optimization'
+			]
+		},
+		{
+			name: 'Enterprise Solution',
+			range: '$75k+',
+			timeline: '16+ weeks',
+			ideal: 'Large organizations needing complex, scalable systems',
+			includes: [
+				'Enterprise-Grade Architecture',
+				'Advanced Security & Compliance',
+				'Multi-Platform Development',
+				'Third-Party Integrations',
+				'Custom Workflows & Automation',
+				'Dedicated Project Manager',
+				'6 Months Post-Launch Support',
+				'Staff Training & Documentation'
+			]
+		}
+	];
+
+	// How to work with us steps
+	const workWithUsSteps: StepItem[] = [
+		{
+			title: 'Discovery Call',
+			subtitle: "Validate Your Idea's Potential",
+			description: [
+				'Free 30-min strategy session ($500 value)',
+				'Market viability & ROI assessment',
+				'Walk away with actionable insights'
+			]
+		},
+		{
+			title: 'Proposal & Planning',
+			subtitle: 'Fixed-Price Roadmap',
+			description: [
+				'Detailed proposal in 48 hours',
+				'Milestone guarantees & timelines',
+				'No surprises, transparent pricing'
+			]
+		},
+		{
+			title: 'Development & Delivery',
+			subtitle: 'Founder-Led Execution',
+			description: [
+				'Weekly demos & progress updates',
+				'Direct access to technical founder',
+				'Code ownership from day one'
+			]
+		},
+		{
+			title: 'Launch & Support',
+			subtitle: 'Success-Driven Launch',
+			description: [
+				'White-glove deployment & monitoring',
+				'90-day performance tracking',
+				'24hr response for critical issues'
+			]
+		}
+	];
 </script>
 
 <svelte:head>
@@ -155,7 +248,7 @@
 	contactGitHub="https://github.com/munzirsuliman"
 	experience="12+ years"
 	projectsCompleted={50}
-	accentColor="#0071e3"
+	accentColor="#10b981"
 />
 
 <!-- 4. TEAM SHOWCASE -->
@@ -163,7 +256,7 @@
 	title="The Moheera Advantage"
 	subtitle="Founder-led expertise with specialized creative network"
 	{teamMembers}
-	accentColor="#6366f1"
+	accentColor="#ffffff"
 />
 
 <!-- 5. PROJECT TYPES & APPROACH -->
@@ -192,13 +285,15 @@
 		ipad: 'portrait',
 		iphone: 'portrait'
 	}}
+	accentColor="#ffffff"
+	className="bg-gradient-to-br from-blue-900/40 via-black to-purple-900/40"
 />
 
 <!-- 8. SURPLUSBITE - Multi-Device Showcase (3 images) -->
 <MultiDeviceSlide
 	title="SurplusBite"
 	subtitle="The Intelligent Surplus Management"
-	description="A seamless platform transforming food surplus into community nourishment through automated donation management."
+	description="Smart surplus management connecting restaurants with charities to turn excess food into community nourishment—powered by automated logistics."
 	images={{
 		macbook: '/img/surplusbite/desktop.png',
 		ipad: '/img/surplusbite/ipad.png',
@@ -208,6 +303,8 @@
 		ipad: 'landscape',
 		iphone: 'portrait'
 	}}
+	accentColor="#ffffff"
+	className="bg-gradient-to-br from-yellow-700/40 via-black to-yellow-900/40"
 />
 
 <!-- 9. FITBITE - Multi-Device Platform (3 images) -->
@@ -229,6 +326,8 @@
 		ipad: 'landscape',
 		iphone: 'portrait'
 	}}
+	accentColor="#ffffff"
+	className="bg-gradient-to-br from-orange-900/40 via-black to-red-900/40"
 />
 
 <!-- 10. ECHOIMPACT - Multi-Device Sustainability (3 images) -->
@@ -247,8 +346,9 @@
 	reverse={false}
 	title="EchoImpact"
 	description="A smart ecosystem converting recycling efforts into measurable environmental progress."
-	accentColor="#7c3aed"
+	accentColor="#ffffff"
 	orientation="portrait"
+	className="bg-gradient-to-br from-green-900/40 via-black to-emerald-900/40"
 />
 
 <!-- 11. SOCIALWALL - Single Image Web Showcase -->
@@ -258,13 +358,14 @@
 	description="A dynamic display platform transforming social buzz into immersive, moderated visual spectacles for events and campaigns."
 	imageUrl="/img/socialwall/desktop.png"
 	altText="SocialWall Live Display"
-	accentColor="#7c3aed"
 	features={[
-		'Multi-Platform Hashtag Aggregation – Real-time feeds from 20+ social sources in a unified dashboard',
-		'Realtime Moderation – Instant content filtering and approval for flawless curation',
-		'Scalable Display Control – Unlimited screens with adaptive layouts for any venue or campaign'
+		'Multi-Platform Hashtag Aggregation - Real-time feeds from 20+ social sources in a unified dashboard',
+		'Realtime Moderation - Instant content filtering and approval for flawless curation',
+		'Scalable Display Control - Unlimited screens with adaptive layouts for any venue or campaign'
 	]}
 	reverse={false}
+	accentColor="#ffffff"
+	className="bg-gradient-to-br from-yellow-900/40 via-black to-orange-900/40"
 />
 
 <!-- 12. QUOTATIONGATE - Multi-Device B2B  -->
@@ -273,7 +374,8 @@
 	subtitle="Digital Construction Procurement"
 	description="A next-gen platform streamlining contractor-supplier connections through intelligent project matching"
 	imageUrl="/img/qg/desktop.png"
-	accentColor="#10b981"
+	accentColor="#ffffff"
+	className="bg-gradient-to-br from-yellow-900/40 via-black to-white/40"
 />
 
 <!-- 13. PROCESS INTRODUCTION -->
@@ -283,7 +385,11 @@
 />
 
 <!-- 14. DEVELOPMENT PROCESS -->
-<ProductDevelopmentSlide />
+<ProductDevelopmentSlide
+	title="From Idea to Launch"
+	subtitle="A Comprehensive Guide to Product Development"
+	className="bg-black"
+/>
 
 <!-- 15. PORTFOLIO GALLERY -->
 <GallerySlide
@@ -299,10 +405,36 @@
 	websites={websiteShowcase}
 />
 
-<!-- 17. CLOSING CALL-TO-ACTION -->
+<!-- 17. HOW TO WORK WITH US -->
+<StepsSlide
+	steps={workWithUsSteps}
+	title="How to Work With Us"
+	subtitle="A simple, transparent process from idea to launch"
+	showFeedbackLoop={true}
+	feedbackText="Continuous Communication"
+	className="bg-black"
+/>
+
+<!-- 18. CLOSING CALL-TO-ACTION -->
 <TextSlide
 	text="Ready to Turn Your Idea Into Reality?"
 	subText="Based in Dubai, serving ambitious entrepreneurs globally. Let's discuss your vision and create a roadmap to bring it to life."
+	remarks="✓ Free consultation • ✓ 48-hour response guarantee • ✓ No obligations"
+/>
+
+<!-- 19. PRICING SECTION -->
+<PricingSection
+	{pricingTiers}
+	title="Investment & Pricing"
+	subtitle="Transparent pricing ranges to help you plan your project budget"
+	className="bg-gradient-to-br from-emerald-900/50 via-black to-emerald-900/50"
+/>
+
+<!-- 20. CONTACT FORM -->
+<ContactForm
+	title="Start Your Project Today"
+	subtitle="Tell me about your project and get a detailed proposal within 48 hours"
+	className="bg-black"
 />
 
 <style>
