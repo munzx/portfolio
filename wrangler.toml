@@ -1,0 +1,16 @@
+name = "demofyit"
+compatibility_date = "2023-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+compatibility_flags = ["nodejs_compat"]
+
+[[env.production.routes]]
+pattern = "/*"
+zone_name = "yourdomain.com"
+
+[env.production.vars]
+# Environment variables will be set in Cloudflare Pages dashboard
+# SENDGRID_API_KEY = "your_key_here"
+# SENDGRID_FROM_EMAIL = "your_email_here" 
+# SENDGRID_TO_EMAIL = "your_email_here"
