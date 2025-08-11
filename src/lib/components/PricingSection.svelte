@@ -6,6 +6,20 @@
 	export let title = 'Investment & Pricing';
 	export let subtitle = 'Transparent pricing ranges to help you plan your project budget';
 	export let className = 'bg-gradient-to-br from-emerald-900 via-black to-blue-900';
+
+	function handleTierSelection(tier: PricingTier) {
+		if (tier.name === 'Enterprise Solution') {
+			// Create a modified version for enterprise that shows "Contact us"
+			const enterpriseTier: PricingTier = {
+				...tier,
+				range: 'Contact us',
+				timeline: 'Custom timeline'
+			};
+			selectPricingTier(enterpriseTier);
+		} else {
+			selectPricingTier(tier);
+		}
+	}
 </script>
 
 <BaseSlide {className}>
@@ -38,14 +52,19 @@
 						<div class="p-6">
 							<!-- Tier Name & Price -->
 							<h3 class="mb-2 text-xl font-bold text-white">{tier.name}</h3>
-							<div
-								class="mb-2 text-2xl font-bold {tier.popular
-									? 'text-emerald-400'
-									: 'text-blue-400'}"
-							>
-								{tier.range}
-							</div>
-							<div class="mb-4 text-sm text-gray-400">{tier.timeline}</div>
+							{#if tier.name === 'Enterprise Solution'}
+								<div class="mb-2 text-2xl font-bold text-blue-400">Contact us</div>
+								<div class="mb-4 text-sm text-gray-400">Custom timeline</div>
+							{:else}
+								<div
+									class="mb-2 text-2xl font-bold {tier.popular
+										? 'text-emerald-400'
+										: 'text-blue-400'}"
+								>
+									{tier.range}
+								</div>
+								<div class="mb-4 text-sm text-gray-400">{tier.timeline}</div>
+							{/if}
 
 							<!-- Ideal For -->
 							<div class="mb-6 rounded-lg border border-gray-600/20 bg-gray-600/10 p-3">
@@ -78,12 +97,12 @@
 
 							<!-- CTA Button -->
 							<button
-								on:click={() => selectPricingTier(tier)}
+								on:click={() => handleTierSelection(tier)}
 								class="mt-6 w-full rounded-lg py-3 text-sm font-medium transition-all duration-300 {tier.popular
 									? 'bg-emerald-500 text-white hover:bg-emerald-600'
 									: 'border border-white/20 text-white hover:bg-white/10'}"
 							>
-								Select This Option
+								{tier.name === 'Enterprise Solution' ? 'Get Custom Quote' : 'Select This Option'}
 							</button>
 						</div>
 					</div>
