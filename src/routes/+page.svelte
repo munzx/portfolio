@@ -39,29 +39,6 @@
 		website: 'https://moheera.com'
 	};
 
-	const moheeraStats: any = [
-		{
-			number: '50+',
-			label: 'Projects Delivered',
-			description: 'From MVP to full-scale platforms'
-		},
-		{
-			number: '12+',
-			label: 'Years Experience',
-			description: 'Deep technical & creative expertise'
-		},
-		{
-			number: '70%',
-			label: 'Confidential Projects',
-			description: 'Trusted by stealth startups & enterprises'
-		},
-		{
-			number: '48hr',
-			label: 'Response Time',
-			description: 'Direct access to decision-maker'
-		}
-	];
-
 	// Team members and trusted network
 	const teamMembers = [
 		{
@@ -77,12 +54,12 @@
 				'Project Management'
 			],
 			linkedIn: 'https://linkedin.com/in/munzirsuliman',
-			github: 'https://github.com/munzirsuliman'
+			github: 'https://github.com/munzx'
 		},
 		{
 			name: 'Creative Network',
 			title: 'Specialized Design Partners',
-			image: '/img/test2.png',
+			image: '/team-creative.jpg',
 			bio: 'Curated network of UI/UX designers, brand specialists, and creative professionals for complex design challenges.',
 			skills: [
 				'UI/UX Design',
@@ -95,7 +72,7 @@
 		{
 			name: 'Technical Collective',
 			title: 'Development Specialists',
-			image: '/img/test3.png',
+			image: '/team-technical.jpg',
 			bio: 'Trusted development partners for large-scale projects requiring specialized expertise or accelerated timelines.',
 			skills: [
 				'Mobile Development',
@@ -145,7 +122,6 @@
 	title="Moheera"
 	subtitle="Innovation. Excellence. Impact."
 	company={moheeraCompany}
-	stats={moheeraStats}
 	accentColor="#10b981"
 />
 
@@ -166,7 +142,10 @@
 		'Full-Stack Development',
 		'UI/UX Design',
 		'TypeScript/JavaScript',
-		'React/Svelte/Node.js',
+		'Svelte/Node.js',
+		'Python',
+		'Machine Learning',
+		'Agentic AI',
 		'Team Leadership',
 		'Technical Consultation',
 		'Project Management'
@@ -190,7 +169,7 @@
 <!-- 5. PROJECT TYPES & APPROACH -->
 <TextSlide
 	text="We Partner With Visionaries Across Industries"
-	subText="From fintech startups seeking regulatory-compliant solutions, to restaurants needing custom ordering systems, to healthcare innovators building patient engagement platforms. Whether you're a Dubai-based entrepreneur with a regional expansion plan, an international company entering the MENA market, or a creative professional with a breakthrough concept - we provide the technical expertise and strategic guidance to make it happen."
+	subText="From social startups driving real-world change, to restaurants seeking bespoke ordering systems, to cutting-edge projects in Agentic LLMs, machine learning, and fintech innovation—we bring ideas to life. Whether you’re a Dubai entrepreneur ready to scale across the region, a global brand entering the MENA market, or a creative visionary with a breakthrough concept, we deliver the technical expertise and strategic insight to turn your vision into reality."
 />
 
 <!-- 6. PORTFOLIO INTRODUCTION -->
