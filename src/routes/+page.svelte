@@ -245,7 +245,7 @@
 	]}
 	contactEmail="munzir.suliman@outlook.com"
 	contactLinkedIn="https://linkedin.com/in/munzirsuliman"
-	contactGitHub="https://github.com/munzirsuliman"
+	contactGitHub="https://github.com/munzx"
 	experience="12+ years"
 	projectsCompleted={50}
 	accentColor="#10b981"
